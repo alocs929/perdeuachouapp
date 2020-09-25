@@ -7,8 +7,8 @@ import {Container} from './styles';
 function Cadastro(){
   return(
     <Container>
-      <Text>Tela de Cadastro</Text>
-
+      <Text>Registar pertence</Text>
+      
     </Container>
   );
 }
