@@ -1,22 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {Text } from "react-native";
 
-import {Container, CreateAccountButton, CreateAccountButtonText} from './styles';
+import {
+  Container,
+  CreateAccount,
+  CreateAccountButtonText,
+  Title,
+  SubTitle,
+  Field,
+  TitleField,
+  InputField,
+  ButtonLoginText,
+  ButtonLogin
+} from './styles';
 
 import { useNavigation } from '@react-navigation/native';
 
 function Login(){
-
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigation = useNavigation();
+
+  function handleSubmit (){
+    console.log(email + password);
+  }
+
 
   return(
     <Container>
+      <Title>LOGO</Title>
 
-      <Text>Tela de Login B</Text>
-      <CreateAccountButton onPress={() => navigation.navigate('Cadastro')}>
-        <CreateAccountButtonText>Criar uma conta</CreateAccountButtonText>
-      </CreateAccountButton>
+      <Field>
+      <SubTitle>Seja bem vindo!</SubTitle>
+        <TitleField>Email</TitleField>
+        <InputField
+          placeholder="email..."
+          value={email}
+          onChangeText={text => setEmail(text)}
+        ></InputField>
+      </Field>
+
+      <Field>
+        <TitleField>Senha</TitleField>
+        <InputField
+          secureTextEntry={true}
+          placeholder="senha..."
+          value={password}
+          onChangeText={text => setPassword(text)}
+        ></InputField>
+      </Field>
+
+
+
+        <Text
+
+        > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
+        </Text>
+
+
+      <ButtonLogin
+        onPress={handleSubmit}
+      >
+        <ButtonLoginText>Entrar</ButtonLoginText>
+      </ButtonLogin>
+
+      <CreateAccount>
+        <Text>Ainda não possui uma conta?</Text>
+        <CreateAccountButtonText
+          onPress = {()=> navigation.navigate('Cadastro')}
+        >
+          <Text style={{color:'red'}}>Registrar</Text>
+        </CreateAccountButtonText>
+      </CreateAccount>
 
     </Container>
   );
