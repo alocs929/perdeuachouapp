@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import {Text } from "react-native";
 
+
 import {
   Container,
   CreateAccount,
@@ -16,8 +17,11 @@ import {
 } from './styles';
 
 import { useNavigation } from '@react-navigation/native';
+import PageHeader from '../../components/PageHeader';
 
-function Login(){
+
+
+const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
@@ -27,8 +31,16 @@ function Login(){
   }
 
 
+  // navigation.openDrawer();
+
   return(
+    <>
     <Container>
+
+
+
+      <PageHeader title="Pagina Inicial"/>
+
       <Title>LOGO</Title>
 
       <Field>
@@ -53,10 +65,10 @@ function Login(){
 
 
 
-        <Text
+      <Text
 
-        > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
-        </Text>
+      > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
+      </Text>
 
 
       <ButtonLogin
@@ -75,6 +87,7 @@ function Login(){
       </CreateAccount>
 
     </Container>
+    </>
   );
 }
 
