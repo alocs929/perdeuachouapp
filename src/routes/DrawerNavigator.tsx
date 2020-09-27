@@ -18,6 +18,7 @@ const DrawerNavigator: React.FC = () => {
         {/* <Drawer.Screen name="Login" component={Login}/> */}
         <Drawer.Screen name="Login" component={Login}/>
         <Drawer.Screen name="Cadastro" component={Cadastro} />
+        
       </Drawer.Navigator>
     </>
   );

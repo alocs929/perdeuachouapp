@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
 import {Text } from "react-native";
-
 
 import {
   Container,
@@ -19,8 +17,6 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
 
-
-
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,16 +25,11 @@ const Login: React.FC = () => {
   function handleSubmit (){
     console.log(email + password);
   }
-
-
   // navigation.openDrawer();
 
   return(
-    <>
+    // <>
     <Container>
-
-
-
       <PageHeader title="Pagina Inicial"/>
 
       <Title>LOGO</Title>
@@ -87,7 +78,7 @@ const Login: React.FC = () => {
       </CreateAccount>
 
     </Container>
-    </>
+    // </>
   );
 }
 

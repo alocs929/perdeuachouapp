@@ -4,10 +4,12 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
+    
 `;
 
 export const Title = styled.Text`
   font-size: 50px;
+  
 `;
 
 export const SubTitle = styled.Text`
@@ -61,15 +63,20 @@ export const CreateAccount = styled.View`
   bottom: 0;
   right: 0;
   padding: 10px 0 ${16 + getBottomSpace()}px;
-
+  width: 100%;
   justify-content: center;
   align-items: center;
+  
 `;
 
 export const CreateAccountButtonText = styled.TouchableOpacity`
   margin-top: 5px;
-  justify-content: center;
+  /* justify-content: center; */
+  
+  /* background-color: blue; */
+  text-align: center;
   align-items: center;
   color: #ff9000;
+  /* width: 100%; */
 `;
 
