@@ -1,29 +1,86 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import {Text } from "react-native";
 
-import {Container, CreateAccountButton, CreateAccountButtonText, ButtonsFooter} from './styles';
+import {
+  Container,
+  CreateAccount,
+  CreateAccountButtonText,
+  Title,
+  SubTitle,
+  Field,
+  TitleField,
+  InputField,
+  ButtonLoginText,
+  ButtonLogin
+} from './styles';
 
 import { useNavigation } from '@react-navigation/native';
+import PageHeader from '../../components/PageHeader';
 
-function Login(){
-
+const Login: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigation = useNavigation();
 
-  return(
-    <Container>
+  function handleSubmit (){
+    console.log(email + password);
+  }
+  // navigation.openDrawer();
 
-      <Text>Tela de Login B</Text>
-      <ButtonsFooter>
-        <CreateAccountButton onPress={() => navigation.navigate('Cadastro')}>
-          <CreateAccountButtonText>Criar uma conta</CreateAccountButtonText>
-        </CreateAccountButton>
-        <CreateAccountButton onPress={() => navigation.navigate('CadastroObjetos')}>
-          <CreateAccountButtonText>Adicionar um objeto</CreateAccountButtonText>
-        </CreateAccountButton>
-      </ButtonsFooter>
+  return(
+    // <>
+    <Container>
+      <PageHeader title="Pagina Inicial"/>
+
+      <Title>LOGO</Title>
+
+      <Field>
+      <SubTitle>Seja bem vindo!</SubTitle>
+        <TitleField>Email</TitleField>
+        <InputField
+          placeholder="email..."
+          value={email}
+          onChangeText={text => setEmail(text)}
+        ></InputField>
+      </Field>
+
+      <Field>
+        <TitleField>Senha</TitleField>
+        <InputField
+          secureTextEntry={true}
+          placeholder="senha..."
+          value={password}
+          onChangeText={text => setPassword(text)}
+        ></InputField>
+      </Field>
+
+
+
+      <Text
+
+      > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
+      </Text>
+
+
+      <ButtonLogin
+        onPress={handleSubmit}
+      >
+        <ButtonLoginText>Entrar</ButtonLoginText>
+      </ButtonLogin>
+
+      <CreateAccount>
+        <Text>Ainda não possui uma conta?</Text>
+        <CreateAccountButtonText
+          onPress = {()=> navigation.navigate('Cadastro')}
+        >
+          <Text style={{color:'red'}}>Registrar</Text>
+        </CreateAccountButtonText>
+      </CreateAccount>
+
     </Container>
+    // </>
   );
 }
+
 
 export default Login;
