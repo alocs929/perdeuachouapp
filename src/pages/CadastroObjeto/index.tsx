@@ -3,10 +3,10 @@ import { useNavigation } from '@react-navigation/native';
 
 import {
     Container,
-    Titulo, 
-    CampoTexto, 
-    Label, 
-    ButtonSave, 
+    Titulo,
+    CampoTexto,
+    Label,
+    ButtonSave,
     ButtonSaveText,
     MensagemSucesso
 } from './styles';
@@ -37,7 +37,7 @@ const CadastroObjetos: React.FC = () => {
     );
 
     const navigation = useNavigation();
-            
+
     function cleanFields(){
         setCategoria('');
         setDescricao('');
@@ -72,29 +72,29 @@ const CadastroObjetos: React.FC = () => {
             {/* <Label>Data</Label>
             <CampoTexto placeholder="Data em que o pertence foi encontrado" /> */}
             {
-                cadastrado 
-                && 
+                cadastrado
+                &&
                 <MensagemSucesso>
                     Objeto cadastrado com sucesso
                 </MensagemSucesso>
             }
             <Label>Categoria</Label>
-            <CampoTexto 
-                placeholder="Tipo de pertence" 
+            <CampoTexto
+                placeholder="Tipo de pertence"
                 value={categoria}
                 onChangeText={text => setCategoria(text)}
                 />
 
             <Label>Descrição</Label>
-            <CampoTexto 
-                placeholder="Descreva o pertence" 
+            <CampoTexto
+                placeholder="Descreva o pertence"
                 value={descricao}
                 onChangeText={text => setDescricao(text)}
             />
 
             <Label>Localização</Label>
-            <CampoTexto 
-                placeholder="Possiveis locais onde foi perdido / encontrado" 
+            <CampoTexto
+                placeholder="Possiveis locais onde foi perdido / encontrado"
                 value={encontradoEm}
                 onChangeText={text => setEncontradoEm(text)}
                 />

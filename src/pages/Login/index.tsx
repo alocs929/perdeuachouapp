@@ -25,6 +25,15 @@ const Login: React.FC = () => {
   function handleSubmit (){
     console.log(email + password);
   }
+
+  // async function handleSubmit (){
+  //   const response = await api.post('/login', {
+  //     email,
+  //     password
+  //   });
+  // }
+
+
   // navigation.openDrawer();
 
   return(
