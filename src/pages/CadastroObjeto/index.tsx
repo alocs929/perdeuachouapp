@@ -1,34 +1,66 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import {Container, Titulo, CampoTexto, Label, ButtonSave, ButtonSaveText} from './styles';
+import {
+    Container,
+    Titulo, 
+    CampoTexto, 
+    Label, 
+    ButtonSave, 
+    ButtonSaveText,
+    MensagemSucesso
+} from './styles';
 import {Text, TextInput } from "react-native";
 import api from '../../services/api';
 
 const CadastroObjetos: React.FC = () => {
 
+    const [cadastrado, setCadastrado] = useState(false);
     const [categoria, setCategoria] = useState('');
     const [descricao, setDescricao] = useState('');
-    const [localizacao, setLocalizacao] = useState('');
-    const [imagens, setImagens] = useState([""]);
+    const [encontradoEm, setEncontradoEm] = useState('');
+    const [id, setId] = useState(1);
+    const [images, setimages] = useState([{"id":2, "link":"string"}]);
     const [status, setStatus] = useState('AGUARDANDO');
     const [tipo, setTipo] = useState('ACHADO');
-    const [usuario, setUsuario] = useState({'id':1});
+    const [usuario, setUsuario] = useState(
+        {
+            "cpfCpnj": "string",
+            "email": "string",
+            "id": 1,
+            "nome": "string",
+            "pertences": [
+              {}
+            ],
+            "telefone": "string"
+        }
+    );
 
     const navigation = useNavigation();
+            
+    function cleanFields(){
+        setCategoria('');
+        setDescricao('');
+        setEncontradoEm('');
+    }
 
     async function handleFieldsSubmit (){
         let pertence = {
             categoria,
             descricao,
-            localizacao,
-            imagens,
+            encontradoEm,
+            id,
+            images,
             status,
             tipo,
             usuario
         };
         console.log(pertence);
-        const response = await api.post(``, pertence);
+        const response = await api.post('pertence', pertence);
+        if (response.status){
+            setCadastrado(true);
+            cleanFields();
+        }
         console.log(response.data);
     }
 
@@ -39,7 +71,13 @@ const CadastroObjetos: React.FC = () => {
             </Titulo>
             {/* <Label>Data</Label>
             <CampoTexto placeholder="Data em que o pertence foi encontrado" /> */}
-
+            {
+                cadastrado 
+                && 
+                <MensagemSucesso>
+                    Objeto cadastrado com sucesso
+                </MensagemSucesso>
+            }
             <Label>Categoria</Label>
             <CampoTexto 
                 placeholder="Tipo de pertence" 
@@ -57,8 +95,8 @@ const CadastroObjetos: React.FC = () => {
             <Label>Localização</Label>
             <CampoTexto 
                 placeholder="Possiveis locais onde foi perdido / encontrado" 
-                value={localizacao}
-                onChangeText={text => setLocalizacao(text)}
+                value={encontradoEm}
+                onChangeText={text => setEncontradoEm(text)}
                 />
 
             <ButtonSave onPress={handleFieldsSubmit}>

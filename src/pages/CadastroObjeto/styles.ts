@@ -32,6 +32,11 @@ export const CampoTexto = styled.TextInput`
     margin-bottom: 4px;
 `;
 
+export const MensagemSucesso = styled.Text`
+  width: 100%;
+  text-align: center;
+`;
+
 export const ButtonSave = styled.TouchableOpacity`
     
     margin-top: 10%;
