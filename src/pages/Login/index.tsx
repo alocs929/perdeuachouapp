@@ -3,7 +3,7 @@ import {Text } from "react-native";
 
 import {
   Container,
-  CreateAccount,
+  CreateAccountButton,
   CreateAccountButtonText,
   Title,
   SubTitle,
@@ -37,57 +37,57 @@ const Login: React.FC = () => {
   // navigation.openDrawer();
 
   return(
-    // <>
-    <Container>
-      <PageHeader title="Pagina Inicial"/>
+    <>
+      <Container>
+        <PageHeader title="Pagina Inicial"/>
 
-      <Title>LOGO</Title>
+        <Title>LOGO</Title>
 
-      <Field>
-      <SubTitle>Seja bem vindo!</SubTitle>
-        <TitleField>Email</TitleField>
-        <InputField
-          placeholder="email..."
-          value={email}
-          onChangeText={text => setEmail(text)}
-        ></InputField>
-      </Field>
+        <Field>
+        <SubTitle>Seja bem vindo!</SubTitle>
+          <TitleField>Email</TitleField>
+          <InputField
+            placeholder="email..."
+            value={email}
+            onChangeText={text => setEmail(text)}
+          ></InputField>
+        </Field>
 
-      <Field>
-        <TitleField>Senha</TitleField>
-        <InputField
-          secureTextEntry={true}
-          placeholder="senha..."
-          value={password}
-          onChangeText={text => setPassword(text)}
-        ></InputField>
-      </Field>
-
-
-
-      <Text
-
-      > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
-      </Text>
+        <Field>
+          <TitleField>Senha</TitleField>
+          <InputField
+            secureTextEntry={true}
+            placeholder="senha..."
+            value={password}
+            onChangeText={text => setPassword(text)}
+          ></InputField>
+        </Field>
 
 
-      <ButtonLogin
-        onPress={handleSubmit}
-      >
-        <ButtonLoginText>Entrar</ButtonLoginText>
-      </ButtonLogin>
 
-      <CreateAccount>
+        <Text
+        > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
+        </Text>
+
+
+        <ButtonLogin
+          onPress={handleSubmit}
+        >
+          <ButtonLoginText>Entrar</ButtonLoginText>
+        </ButtonLogin>
+
+
+      </Container>
+
+      <CreateAccountButton>
         <Text>Ainda não possui uma conta?</Text>
         <CreateAccountButtonText
           onPress = {()=> navigation.navigate('Cadastro')}
         >
           <Text style={{color:'red'}}>Registrar</Text>
         </CreateAccountButtonText>
-      </CreateAccount>
-
-    </Container>
-    // </>
+      </CreateAccountButton>
+    </>
   );
 }
 

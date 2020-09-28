@@ -4,13 +4,13 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-    
+
 `;
 
 
 export const Title = styled.Text`
   font-size: 50px;
-  
+
 `;
 
 export const SubTitle = styled.Text`
@@ -65,31 +65,52 @@ export const CreateAccount = styled.View`
   right: 0;
 `;
 
+// export const CreateAccountButton = styled.TouchableOpacity`
+//   /* position: absolute;
+//   left: 0;
+//   bottom: 0;
+//   right: 0; */
+//   border-top-width: 1px;
+//   /* border-color: #232129; */
+//   padding: 16px 0 ${16 + getBottomSpace()}px;
+
+//   justify-content: center;
+//   align-items: center;
+
+// `;
+
+// export const CreateAccountButtonText = styled.TouchableOpacity`
+//   margin-top: 5px;
+//   /* justify-content: center; */
+
+//   /* background-color: blue; */
+//   text-align: center;
+//   align-items: center;
+//   color: #ff9000;
+//   margin-left: 16px;
+//   font-size: 18px;
+//   width: 100%;
+//   text-align: center;
+// `;
+
 export const CreateAccountButton = styled.TouchableOpacity`
-  /* position: absolute;
+  position: absolute;
+
+  background-color: #f1f1f1;
   left: 0;
   bottom: 0;
-  right: 0; */
+  right: 0;
   border-top-width: 1px;
-  /* border-color: #232129; */
-  padding: 16px 0 ${16 + getBottomSpace()}px;
+  padding: 10px 0 ${16 + getBottomSpace()}px;
 
   justify-content: center;
   align-items: center;
-  
 `;
 
-export const CreateAccountButtonText = styled.TouchableOpacity`
+export const CreateAccountButtonText = styled.Text`
   margin-top: 5px;
-  /* justify-content: center; */
-  
-  /* background-color: blue; */
-  text-align: center;
+  justify-content: center;
   align-items: center;
   color: #ff9000;
-  margin-left: 16px;
-  font-size: 18px;
-  width: 100%;
-  text-align: center;
 `;
 
