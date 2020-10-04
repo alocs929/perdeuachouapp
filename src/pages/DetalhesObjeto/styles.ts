@@ -50,7 +50,7 @@ export const Footer = styled.View`
 `;
 
 export const EditButton = styled.TouchableOpacity`
-  background-color: #ff9000;
+  background-color: #ff6b6b;
   width: 50%;
   padding: 8px;
   justify-content: center;

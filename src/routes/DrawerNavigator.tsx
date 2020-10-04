@@ -6,7 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import Login from '../pages/Login';
 import Cadastro from '../pages/Cadastro';
 import CadastroObjeto from '../pages/CadastroObjeto';
-import DetalhesObjeto from '../pages/DetalhesObjeto'
+import DetalhesObjeto from '../pages/DetalhesObjeto';
+import Match from '../pages/Match';
 import PageHeader from '../components/PageHeader';
 
 const Drawer = createDrawerNavigator();
@@ -22,6 +23,7 @@ const DrawerNavigator: React.FC = () => {
         <Drawer.Screen name="Cadastro" component={Cadastro} />
         <Drawer.Screen name="Cadastro Objetos" component={CadastroObjeto} />
         <Drawer.Screen name="Detalhes Objeto" component={DetalhesObjeto} />
+        <Drawer.Screen name="Match" component={Match} />
       </Drawer.Navigator>
     </>
   );

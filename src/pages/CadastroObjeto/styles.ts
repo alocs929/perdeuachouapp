@@ -41,7 +41,7 @@ export const ButtonSave = styled.TouchableOpacity`
     
     margin-top: 10%;
     width: 90%;
-    background-color:  #ff9000;
+    background-color:  #ff6b6b;
     padding: 8px;
     border-radius: 4px;
 `;
