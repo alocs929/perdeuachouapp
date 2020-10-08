@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Text } from "react-native";
+import {Text, View } from "react-native";
 
 import {
   Container,
@@ -20,6 +20,27 @@ import { useNavigation } from '@react-navigation/native';
 import logo from '../../assets/Logo.jpg';
 
 const Login: React.FC = () => {
+
+  const buttonStyle = {
+    position: "relative",
+    width: 160,
+    height: 170,
+    backgroundColor: "#fff",
+  }
+
+  const shadowStyle = {
+    width: buttonStyle.width,
+    height: buttonStyle.height,
+    color: "#000",
+    border: 2,
+    radius: 3,
+    opacity: 0.2,
+    x: 0,
+    y: 3,
+    style: { marginVertical: 5 }
+  }
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
@@ -28,24 +49,14 @@ const Login: React.FC = () => {
     console.log(email + password);
   }
 
-  // async function handleSubmit (){
-  //   const response = await api.post('/login', {
-  //     email,
-  //     password
-  //   });
-  // }
 
-
-  // navigation.openDrawer();
 
   return(
     <>
 
       <Container>
 
-        <Logo source={logo}></Logo>
-
-        {/* <Title>LOGO</Title> */}
+        <Logo style={{backgroundColor: '#000'}} source={logo}></Logo>
 
         <Field>
         <SubTitle>Seja bem vindo!</SubTitle>
@@ -67,12 +78,9 @@ const Login: React.FC = () => {
           ></InputField>
         </Field>
 
-
-
         <Text
         > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
         </Text>
-
 
         <ButtonLogin
           onPress={handleSubmit}
@@ -80,13 +88,11 @@ const Login: React.FC = () => {
           <ButtonLoginText>Entrar</ButtonLoginText>
         </ButtonLogin>
 
-
       <Text
         style={{color: 'red'}}
         onPress={()=>{navigation.navigate('DrawerNavigator')}}
       >Ir para a Stack Navigation</Text>
       </Container>
-
 
       <CreateAccountButton>
         <Text>Ainda não possui uma conta?</Text>
@@ -99,6 +105,4 @@ const Login: React.FC = () => {
     </>
   );
 }
-
-
 export default Login;

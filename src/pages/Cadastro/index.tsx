@@ -18,8 +18,7 @@ import {
   InputField,
   ButtonLoginText,
   ButtonLogin,
-  FieldCheckBox,
-  SafeAreaViewContainer
+  FieldCheckBox
 } from './styles';
 
 import { useNavigation } from '@react-navigation/native';
