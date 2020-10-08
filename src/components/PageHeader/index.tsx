@@ -7,6 +7,7 @@ import {
   BoxIconLeft,
   BoxIconRight
 } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 interface PageHeaderProps{
   title: string;
@@ -14,17 +15,21 @@ interface PageHeaderProps{
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({title}) => {
+  const navigation = useNavigation();
+
   // console.log(props);
   // navigation.openDrawer();
 
   return(
     <Container>
 
-      <BoxIconLeft onPress={()=> console.log("eu")}>
+      <BoxIconLeft onPress={()=> navigation.openDrawer()}>
         <Ionicons name="ios-menu" size={35} color={ '#000'} />
       </BoxIconLeft>
 
-      <Title>{title}</Title>
+      <Title>
+        {title}
+      </Title>
 
       <BoxIconRight onPress={()=>console.log("notify")}>
         <Ionicons name="ios-notifications-outline" size={35} color={ '#000'} />

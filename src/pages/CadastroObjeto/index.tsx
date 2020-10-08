@@ -12,7 +12,7 @@ import {
 } from './styles';
 import {Text, TextInput } from "react-native";
 import api from '../../services/api';
-
+import PageHeader from '../../components/PageHeader';
 const CadastroObjetos: React.FC = () => {
 
     const [cadastrado, setCadastrado] = useState(false);
@@ -65,6 +65,8 @@ const CadastroObjetos: React.FC = () => {
     }
 
     return (
+      <>
+        <PageHeader title="Cadastro de Objetos"/>
         <Container>
             <Titulo>
                 Cadastrar Pertence
@@ -105,6 +107,7 @@ const CadastroObjetos: React.FC = () => {
                 </ButtonSaveText>
             </ButtonSave>
         </Container>
+      </>
     );
 }
 

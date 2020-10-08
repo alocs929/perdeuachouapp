@@ -13,13 +13,10 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigator: React.FC = () => {
   return (
     <>
-      <Drawer.Navigator initialRouteName="Login">
-
-        {/* <Text>eu</Text> */}
-        {/* <Drawer.Screen name="Login" component={Login}/> */}
-        <Drawer.Screen name="Login" component={Login}/>
-        <Drawer.Screen name="Cadastro" component={Cadastro} />
-        <Drawer.Screen name="CadastroObjetos" component={CadastroObjeto} />
+      <Drawer.Navigator initialRouteName="CadastroObjeto">
+        {/* <Drawer.Screen name="Login" component={Login} /> */}
+        {/* <Drawer.Screen name="Cadastro" component={Cadastro} /> */}
+        <Drawer.Screen name="Cadastro de Objeto" component={CadastroObjeto} />
       </Drawer.Navigator>
     </>
   );

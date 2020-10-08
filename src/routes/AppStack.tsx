@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from '../pages/Login'
 import Cadastro from '../pages/Cadastro'
-import CadastroObjetos from '../pages/CadastroObjeto'
+// import CadastroObjeto from '../pages/CadastroObjeto'
 
 
 import DrawerNavigator from './DrawerNavigator';
@@ -15,8 +15,9 @@ function AppStack() {
   return (
     <NavigationContainer>
       <Navigator screenOptions={{ headerShown: false }}>
-        {/* <Screen name="Login" component={Login} /> */}
-        {/* <Screen name="Cadastro" component={Cadastro} /> */}
+        <Screen name="Login" component={Login} />
+        <Screen name="Cadastro" component={Cadastro} />
+        {/* <Screen name="CadastroObjeto" component={CadastroObjeto}/> */}
         <Screen name="DrawerNavigator" component={DrawerNavigator} />
       </Navigator>
     </NavigationContainer>

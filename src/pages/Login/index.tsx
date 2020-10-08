@@ -6,6 +6,7 @@ import {
   CreateAccountButton,
   CreateAccountButtonText,
   Title,
+  Logo,
   SubTitle,
   Field,
   TitleField,
@@ -15,7 +16,8 @@ import {
 } from './styles';
 
 import { useNavigation } from '@react-navigation/native';
-import PageHeader from '../../components/PageHeader';
+
+import logo from '../../assets/Logo.jpg';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -38,10 +40,12 @@ const Login: React.FC = () => {
 
   return(
     <>
-      <Container>
-        <PageHeader title="Pagina Inicial"/>
 
-        <Title>LOGO</Title>
+      <Container>
+
+        <Logo source={logo}></Logo>
+
+        {/* <Title>LOGO</Title> */}
 
         <Field>
         <SubTitle>Seja bem vindo!</SubTitle>
@@ -77,7 +81,12 @@ const Login: React.FC = () => {
         </ButtonLogin>
 
 
+      <Text
+        style={{color: 'red'}}
+        onPress={()=>{navigation.navigate('DrawerNavigator')}}
+      >Ir para a Stack Navigation</Text>
       </Container>
+
 
       <CreateAccountButton>
         <Text>Ainda não possui uma conta?</Text>
