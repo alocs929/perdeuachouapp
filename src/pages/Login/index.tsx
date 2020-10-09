@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Text } from "react-native";
+import { Text } from "react-native";
 
 import {
   Container,
@@ -24,7 +24,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
 
-  function handleSubmit (){
+  function handleSubmit() {
     console.log(email + password);
   }
 
@@ -38,7 +38,7 @@ const Login: React.FC = () => {
 
   // navigation.openDrawer();
 
-  return(
+  return (
     <>
 
       <Container>
@@ -48,7 +48,7 @@ const Login: React.FC = () => {
         {/* <Title>LOGO</Title> */}
 
         <Field>
-        <SubTitle>Seja bem vindo!</SubTitle>
+          <SubTitle>Seja bem vindo!</SubTitle>
           <TitleField>Email</TitleField>
           <InputField
             placeholder="email..."
@@ -70,7 +70,7 @@ const Login: React.FC = () => {
 
 
         <Text
-        > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
+        > Esqueceu a senha? <Text style={{ color: 'red' }}>Recuperar</Text>
         </Text>
 
 
@@ -81,19 +81,20 @@ const Login: React.FC = () => {
         </ButtonLogin>
 
 
-      <Text
-        style={{color: 'red'}}
-        onPress={()=>{navigation.navigate('DrawerNavigator')}}
-      >Ir para a Stack Navigation</Text>
+        <Text
+          style={{ color: 'red' }}
+          onPress={() => { navigation.navigate('DrawerNavigator') }}
+        >Ir para a Stack Navigation</Text>
+        <Text style={{ color: 'blue' }} onPress={() => { navigation.navigate("Iniciar") }}>Ir para iniciar pagina</Text>
       </Container>
 
 
       <CreateAccountButton>
         <Text>Ainda não possui uma conta?</Text>
         <CreateAccountButtonText
-          onPress = {()=> navigation.navigate('Cadastro')}
+          onPress={() => navigation.navigate('Cadastro')}
         >
-          <Text style={{color:'red'}}>Registrar</Text>
+          <Text style={{ color: 'red' }}>Registrar</Text>
         </CreateAccountButtonText>
       </CreateAccountButton>
     </>
