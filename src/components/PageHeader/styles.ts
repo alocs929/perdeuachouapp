@@ -15,6 +15,7 @@ export const Title = styled.Text`
   font-weight: 600;
   color: black;
   font-size: 30px;
+  width: 50%;
 `;
 
 export const BoxIconLeft = styled.TouchableOpacity``;
