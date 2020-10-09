@@ -8,9 +8,11 @@ import {
     Label,
     ButtonSave,
     ButtonSaveText,
-    MensagemSucesso
+    MensagemSucesso,
+    Select,
+    SelectBorder
 } from './styles';
-import {Text, TextInput } from "react-native";
+import {Text, TextInput, Picker } from "react-native";
 import api from '../../services/api';
 import PageHeader from '../../components/PageHeader';
 const CadastroObjetos: React.FC = () => {
@@ -80,6 +82,7 @@ const CadastroObjetos: React.FC = () => {
                     Objeto cadastrado com sucesso
                 </MensagemSucesso>
             }
+
             <Label>Categoria</Label>
             <CampoTexto
                 placeholder="Tipo de pertence"
@@ -100,6 +103,25 @@ const CadastroObjetos: React.FC = () => {
                 value={encontradoEm}
                 onChangeText={text => setEncontradoEm(text)}
                 />
+
+            <Label>Tipo do objeto</Label>
+            <SelectBorder>
+                <Select 
+                    selectedValue={tipo}
+                    onValueChange={
+                        (itemValor, itemIndex) => {
+                            setTipo(itemValor);
+                        }
+                    }
+                >
+                    <Picker.Item 
+                        label="Perdido"
+                        value="Perdido" />
+                    <Picker.Item 
+                        label="Achado"
+                        value="Achado" />
+                </Select>
+            </SelectBorder>
 
             <ButtonSave onPress={handleFieldsSubmit}>
                 <ButtonSaveText>
