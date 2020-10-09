@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Text } from "react-native";
+import {Text, View, SafeAreaView } from "react-native";
 
 import {
   Container,
@@ -12,7 +12,8 @@ import {
   TitleField,
   InputField,
   ButtonLoginText,
-  ButtonLogin
+  ButtonLogin,
+  Rolagem
 } from './styles';
 
 import { useNavigation } from '@react-navigation/native';
@@ -39,54 +40,57 @@ const Login: React.FC = () => {
   // navigation.openDrawer();
 
   return(
-    <>
-
+<>
+    {/* <SafeAreaView>
+    <ScrollView> */}
       <Container>
+        
+            <Logo source={logo}></Logo>
 
-        <Logo source={logo}></Logo>
+            {/* <Title>LOGO</Title> */}
 
-        {/* <Title>LOGO</Title> */}
+            <Field>
+            <SubTitle>Seja bem vindo!</SubTitle>
+              <TitleField>Email</TitleField>
+              <InputField
+                placeholder="email..."
+                value={email}
+                onChangeText={text => setEmail(text)}
+              ></InputField>
+            </Field>
 
-        <Field>
-        <SubTitle>Seja bem vindo!</SubTitle>
-          <TitleField>Email</TitleField>
-          <InputField
-            placeholder="email..."
-            value={email}
-            onChangeText={text => setEmail(text)}
-          ></InputField>
-        </Field>
-
-        <Field>
-          <TitleField>Senha</TitleField>
-          <InputField
-            secureTextEntry={true}
-            placeholder="senha..."
-            value={password}
-            onChangeText={text => setPassword(text)}
-          ></InputField>
-        </Field>
-
-
-
-        <Text
-        > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
-        </Text>
+            <Field>
+              <TitleField>Senha</TitleField>
+              <InputField
+                secureTextEntry={true}
+                placeholder="senha..."
+                value={password}
+                onChangeText={text => setPassword(text)}
+              ></InputField>
+            </Field>
 
 
-        <ButtonLogin
-          onPress={handleSubmit}
-        >
-          <ButtonLoginText>Entrar</ButtonLoginText>
-        </ButtonLogin>
+
+            <Text
+            > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
+            </Text>
 
 
-      <Text
-        style={{color: 'red'}}
-        onPress={()=>{navigation.navigate('DrawerNavigator')}}
-      >Ir para a Stack Navigation</Text>
+            <ButtonLogin
+              onPress={handleSubmit}
+            >
+              <ButtonLoginText>Entrar</ButtonLoginText>
+            </ButtonLogin>
+
+
+          <Text
+            style={{color: 'red'}}
+            onPress={()=>{navigation.navigate('DrawerNavigator')}}
+          >Ir para a Stack Navigation</Text>
+        
       </Container>
-
+    {/* </ScrollView>
+  </SafeAreaView> */}
 
       <CreateAccountButton>
         <Text>Ainda não possui uma conta?</Text>
@@ -96,6 +100,7 @@ const Login: React.FC = () => {
           <Text style={{color:'red'}}>Registrar</Text>
         </CreateAccountButtonText>
       </CreateAccountButton>
+
     </>
   );
 }
