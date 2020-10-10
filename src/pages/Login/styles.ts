@@ -19,6 +19,9 @@ export const Logo = styled.Image`
   width: 150px;
   height: 150px;
   margin-bottom: 50px;
+  /* border-width: 4; */
+  border-radius: 5;
+
 `;
 
 export const SubTitle = styled.Text`
