@@ -55,9 +55,6 @@ const Profile: React.FC = () => {
             <ContentField>(85) 9 12341234</ContentField>
           </Field>
 
-
-
-
         </FieldBox>
 
 

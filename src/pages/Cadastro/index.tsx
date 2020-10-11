@@ -41,6 +41,7 @@ function Cadastro() {
       nome,
       telefone
     });
+
     console.log("Cadastrou");
     console.log(response);
   }

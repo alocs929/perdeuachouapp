@@ -11,14 +11,10 @@ import { useNavigation } from '@react-navigation/native';
 
 interface PageHeaderProps{
   title: string;
-
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({title}) => {
   const navigation = useNavigation();
-
-  // console.log(props);
-  // navigation.openDrawer();
 
   return(
     <Container>

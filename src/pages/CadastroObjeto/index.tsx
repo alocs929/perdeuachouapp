@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 import {
     Container,
@@ -35,8 +37,26 @@ const CadastroObjetos: React.FC = () => {
             "telefone": "string"
         }
     );
-
     const navigation = useNavigation();
+    const [data,setData] = useState({id: Number, token: String});
+
+    useEffect(() => {
+      async function loadStorageData(): Promise<void> {
+        const [idString, token] = await AsyncStorage.multiGet([
+          '@PerdeuAchou:id',
+          '@PerdeuAchou:token',
+        ]);
+
+
+
+        console.log(idString[1], token[1]);
+
+        // setData({id: Number(idString[1]), token[1]});
+
+      }
+    }, []);
+
+
 
     function cleanFields(){
         setCategoria('');
@@ -67,6 +87,7 @@ const CadastroObjetos: React.FC = () => {
     return (
       <>
         <PageHeader title="Cadastro de Objetos"/>
+
         <Container>
             <Titulo>
                 Cadastrar Pertence
