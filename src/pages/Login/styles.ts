@@ -7,15 +7,21 @@ export const Container = styled.View`
 
 `;
 
+export const Rolagem = styled.ScrollView`
+  flex: 1;
+`;
 
 export const Title = styled.Text`
   font-size: 50px;
 `;
 
 export const Logo = styled.Image`
-  width: 220px;
-  height: 220px;
+  width: 150px;
+  height: 150px;
   margin-bottom: 50px;
+  /* border-width: 4; */
+  border-radius: 5;
+
 `;
 
 export const SubTitle = styled.Text`
@@ -64,14 +70,14 @@ export const ButtonLoginText = styled.Text`
 `;
 
 export const CreateAccount = styled.View`
-  position: absolute;
-  left: 0;
+  /* position: absolute; */
+  /* left: 0;
   bottom: 0;
-  right: 0;
+  right: 0; */
 `;
 
 export const CreateAccountButton = styled.TouchableOpacity`
-  position: absolute;
+  /* position: absolute; */
   background-color: #f1f1f1;
   left: 0;
   bottom: 0;

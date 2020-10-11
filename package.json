@@ -15,11 +15,14 @@
     "axios": "^0.20.0",
     "expo": "~38.0.0",
     "expo-status-bar": "~1.0.2",
-    "expo-updates": "~0.3.3",
+    "expo-updates": "~0.2.8",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
+<<<<<<< HEAD
     "react-native-dropdown-picker": "^3.7.0",
+=======
+>>>>>>> 11219e782928a70a1f7c39519c86f29c66e8c526
     "react-native-gesture-handler": "~1.6.0",
     "react-native-reanimated": "~1.9.0",
     "react-native-safe-area-context": "~3.0.7",
