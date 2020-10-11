@@ -19,91 +19,119 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 import logo from '../../assets/Logo.jpg';
-
+import api from '../../services/api';
+import AsyncStorage from '@react-native-community/async-storage';
 const Login: React.FC = () => {
+
+  const buttonStyle = {
+    position: "relative",
+    width: 160,
+    height: 170,
+    backgroundColor: "#fff",
+  }
+
+  const shadowStyle = {
+    width: buttonStyle.width,
+    height: buttonStyle.height,
+    color: "#000",
+    border: 2,
+    radius: 3,
+    opacity: 0.2,
+    x: 0,
+    y: 3,
+    style: { marginVertical: 5 }
+  }
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
 
-  function handleSubmit (){
-    console.log(email + password);
+  async function handleSubmit (){
+
+    const body = `username=${email}&password=${password}&grant_type=password`;
+
+    const response = await api.post('/oauth/token', body, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic cGVyZGV1YWNob3U6TXBhfVkuOEElVEwyWnhtUA=='
+      }
+    });
+
+    console.log(response);
+
+    if (response.status == 200){
+      const id = response.data.id;
+      const token = response.data.access_token;
+
+      // console.log('############################')
+      // console.log(id)
+      // console.log(token)
+      // console.log('############################')
+
+      await AsyncStorage.setItem('@PerdeuAchou:token', token);
+      await AsyncStorage.setItem('@PerdeuAchou:id', String(id));
+      navigation.navigate('DrawerNavigator');
+
+    }
+
   }
 
-  // async function handleSubmit (){
-  //   const response = await api.post('/login', {
-  //     email,
-  //     password
-  //   });
-  // }
 
-
-  // navigation.openDrawer();
 
   return(
-<>
-    {/* <SafeAreaView>
-    <ScrollView> */}
-      <Container>
-        
-            <Logo source={logo}></Logo>
+  <>
+    <Container>
 
-            {/* <Title>LOGO</Title> */}
+      <Logo source={logo}></Logo>
 
-            <Field>
-            <SubTitle>Seja bem vindo!</SubTitle>
-              <TitleField>Email</TitleField>
-              <InputField
-                placeholder="email..."
-                value={email}
-                onChangeText={text => setEmail(text)}
-              ></InputField>
-            </Field>
 
-            <Field>
-              <TitleField>Senha</TitleField>
-              <InputField
-                secureTextEntry={true}
-                placeholder="senha..."
-                value={password}
-                onChangeText={text => setPassword(text)}
-              ></InputField>
-            </Field>
+      <Field>
+        <SubTitle>Seja bem vindo!</SubTitle>
+        <TitleField>Email</TitleField>
+        <InputField
+          placeholder="email..."
+          value={email}
+          onChangeText={text => setEmail(text)}
+        ></InputField>
+      </Field>
+
+      <Field>
+        <TitleField>Senha</TitleField>
+        <InputField
+          secureTextEntry={true}
+          placeholder="senha..."
+          value={password}
+          onChangeText={text => setPassword(text)}
+        ></InputField>
+      </Field>
 
 
 
-            <Text
-            > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
-            </Text>
+      <Text
+      > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
+      </Text>
 
 
-            <ButtonLogin
-              onPress={handleSubmit}
-            >
-              <ButtonLoginText>Entrar</ButtonLoginText>
-            </ButtonLogin>
+      <ButtonLogin
+        onPress={handleSubmit}
+      >
+        <ButtonLoginText>Entrar</ButtonLoginText>
+      </ButtonLogin>
 
 
-          <Text
-            style={{color: 'red'}}
-            onPress={()=>{navigation.navigate('DrawerNavigator')}}
-          >Ir para a Stack Navigation</Text>
-        
-      </Container>
-    {/* </ScrollView>
-  </SafeAreaView> */}
+    </Container>
 
-      <CreateAccountButton>
-        <Text>Ainda não possui uma conta?</Text>
-        <CreateAccountButtonText
-          onPress = {()=> navigation.navigate('Cadastro')}
-        >
-          <Text style={{color:'red'}}>Registrar</Text>
-        </CreateAccountButtonText>
-      </CreateAccountButton>
+    <CreateAccountButton>
+      <Text>Ainda não possui uma conta?</Text>
+      <CreateAccountButtonText
+        onPress = {()=> navigation.navigate('Cadastro')}
+      >
+        <Text style={{color:'red'}}>Registrar</Text>
+      </CreateAccountButtonText>
+    </CreateAccountButton>
 
-    </>
+  </>
   );
 }
-
-
 export default Login;

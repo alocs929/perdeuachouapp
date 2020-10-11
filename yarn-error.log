@@ -1,28 +1,30 @@
 Arguments: 
-  /home/jorder/.config/nvm/versions/node/v12.18.2/bin/node /usr/share/yarn/bin/yarn.js install
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add @types/react-native-community/async-storage
 
 PATH: 
-  /home/jorder/.config/nvm/versions/node/v12.18.2/bin:/home/jorder/anaconda3/bin:/home/jorder/anaconda3/condabin:/home/jorder/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  /home/bruno/.yarn/bin:/home/bruno/.zinit/polaris/sbin:/home/bruno/.zinit/polaris/bin:/home/bruno/.zinit/polaris/usr/sbin:/home/bruno/.zinit/polaris/usr/bin:/home/bruno/.yarn/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/bruno/Android/Sdk/emulator:/home/bruno/Android/Sdk/tools:/home/bruno/Android/Sdk/tools/bin:/home/bruno/Android/Sdk/platform-tools:/home/bruno/android-studio/bin:/home/bruno/Android/Sdk/emulator:/home/bruno/Android/Sdk/tools:/home/bruno/Android/Sdk/tools/bin:/home/bruno/Android/Sdk/platform-tools:/home/bruno/android-studio/bin
 
 Yarn version: 
-  1.22.4
+  1.22.5
 
 Node version: 
-  12.18.2
+  12.18.0
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: connect ENETUNREACH 2606:4700::6810:1b23:443 - Local (:::0)
-      at internalConnect (net.js:923:16)
-      at defaultTriggerAsyncIdScope (internal/async_hooks.js:323:12)
-      at emitLookup (net.js:1063:9)
-      at /usr/share/yarn/lib/cli.js:107542:29
-      at /usr/share/yarn/lib/cli.js:107388:25
-      at RawTask.module.exports.RawTask.call (/usr/share/yarn/lib/cli.js:83613:19)
-      at flush (/usr/share/yarn/lib/cli.js:83695:29)
-      at processTicksAndRejections (internal/process/task_queues.js:79:11)
+  Error: https://registry.yarnpkg.com/@types%2freact-native-community/async-storage: Request "https://registry.yarnpkg.com/@types%2freact-native-community/async-storage" returned a 405
+      at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66997:18)
+      at Request.self.callback (/usr/share/yarn/lib/cli.js:140749:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (/usr/share/yarn/lib/cli.js:141721:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (/usr/share/yarn/lib/cli.js:141643:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (_stream_readable.js:1221:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
 
 npm manifest: 
   {
@@ -35,7 +37,7 @@ npm manifest:
       "eject": "expo eject"
     },
     "dependencies": {
-      "@react-native-community/masked-view": "^0.1.10",
+      "@react-native-community/masked-view": "0.1.10",
       "@react-navigation/drawer": "^5.9.1",
       "@react-navigation/native": "^5.7.4",
       "@react-navigation/stack": "^5.9.1",
@@ -47,9 +49,9 @@ npm manifest:
       "react-dom": "16.13.1",
       "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
       "react-native-gesture-handler": "~1.6.0",
-      "react-native-reanimated": "^1.9.0",
-      "react-native-safe-area-context": "3.0.7",
-      "react-native-screens": "~2.9.1",
+      "react-native-reanimated": "~1.9.0",
+      "react-native-safe-area-context": "~3.0.7",
+      "react-native-screens": "~2.9.0",
       "react-native-web": "~0.13.12",
       "styled-components": "^5.2.0"
     },
@@ -1826,7 +1828,7 @@ Lockfile:
       sudo-prompt "^9.0.0"
       wcwidth "^1.0.1"
   
-  "@react-native-community/masked-view@^0.1.10":
+  "@react-native-community/masked-view@0.1.10":
     version "0.1.10"
     resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
     integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
@@ -3731,10 +3733,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.0.2.tgz#2441a77c56be31597898337b0d086981f2adefd8"
     integrity sha512-5313u744GcLzCadxIPXyTkYw77++UXv1dXCuhYDxDbtsEf93iMra7WSvzyE8a7mRQLIIPRuGnBOdrL/V1C7EOQ==
   
-  expo-updates@~0.3.3:
-    version "0.3.4"
-    resolved "https://registry.yarnpkg.com/expo-updates/-/expo-updates-0.3.4.tgz#6892bd244ec3f4fd07041d5a7175ab484c1c4d11"
-    integrity sha512-8/V0v1gp4elQvhBp8N40h+L0k5ldaHxmEKDJinQgn5NBi6YZ53MVNA3QjGhAfhKLUkrlCyaLt4RKUk5o1cvtZw==
+  expo-updates@~0.2.8:
+    version "0.2.14"
+    resolved "https://registry.yarnpkg.com/expo-updates/-/expo-updates-0.2.14.tgz#0cfbab6ebb8560b1955d888a7d4a31c643e7f3fd"
+    integrity sha512-/FNEDRSS7xxG+ql/vDdjPD6eAG63K9zbXsinYsu9Nrm06OhbB8MAx+OA4bMn+CZkvrQOzVJMhZ3oPvyOvEcmuQ==
     dependencies:
       "@expo/metro-config" "^0.1.16"
       fbemitter "^2.1.1"
@@ -6343,10 +6345,10 @@ Lockfile:
       invariant "^2.2.4"
       use-subscription "^1.0.0"
   
-  react-native-gesture-handler@~1.7.0:
-    version "1.7.0"
-    resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.7.0.tgz#0ef74a5ba836832e497dc49eb1ce58baa6c617e5"
-    integrity sha512-1CrjJf8Z6Iz2XWzfZknYtsm2sud5Lu/pLhhokkgBIKttxqGDtetDEVFDJOTJWJyKCrUPk0X5tnWi/diSF4q++w==
+  react-native-gesture-handler@~1.6.0:
+    version "1.6.1"
+    resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.6.1.tgz#678e2dce250ed66e93af409759be22cd6375dd17"
+    integrity sha512-gQgIKhDiYf754yzhhliagLuLupvGb6ZyBdzYzr7aus3Fyi87TLOw63ers+r4kGw0h26oAWTAdHd34JnF4NeL6Q==
     dependencies:
       "@egjs/hammerjs" "^2.0.17"
       hoist-non-react-statics "^2.3.1"
@@ -6358,27 +6360,22 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
     integrity sha512-/VbpIEp8tSNNHIvstuA3Swx610whci1Zpc9mqNkqn14DkMbw+ORviln2u0XyHG1kPvvwTNGZY6QpeFwxYaSdbQ==
   
-  react-native-reanimated@^1.13.0:
-    version "1.13.0"
-    resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.13.0.tgz#1ee5d27d34bd2cee7dfad4ae9a3673300872c917"
-    integrity sha512-uadP/0QO+4TCsyPSvzRdl+76NPM7Bp8M25KQLB4Hg3tWBMjhrMrETnzNi33L/OPfmhU+7rceyi0QPe/DxKT5bQ==
+  react-native-reanimated@~1.9.0:
+    version "1.9.0"
+    resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.9.0.tgz#38676c99dd585504fdc7331efb45e5f48ec7339a"
+    integrity sha512-Aj+spgIHRiVv7ezGADxnSH1EoKrQRD2+XaSiGY0MiB/pvRNNrZPSJ+3NVpvLwWf9lZMOP7dwqqyJIzoZgBDt8w==
     dependencies:
       fbjs "^1.0.0"
-  
-  react-native-safe-area-context@3.1.4:
-    version "3.1.4"
-    resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.1.4.tgz#9b7f883a5ae8da6218d17467a350434005893602"
-    integrity sha512-bXx3hqz4LovFoMnJIRGIWL2oJ/PHadXviBKvgZV9yNErtURQLJSn0yfQytVtiqslhaBMZOJwH4R6HiClyofvBg==
   
   react-native-safe-area-context@~3.0.7:
     version "3.0.7"
     resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.0.7.tgz#0f53de7a30d626d82936000f3f6db374ecc4b800"
     integrity sha512-dqhRTlIFe5+P1yxitj0C9XVUxLqOmjomeqzUSSY8sNOWVjtIhEY/fl4ZKYpAVnktd8dt3zl13XmJTmRmy3d0uA==
   
-  react-native-screens@~2.10.1:
-    version "2.10.1"
-    resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.10.1.tgz#06d22fae87ef0ce51c616c34a199726db1403b95"
-    integrity sha512-Z2kKSk4AwWRQNCBmTjViuBQK0/Lx0jc25TZptn/2gKYUCOuVRvCekoA26u0Tsb3BIQ8tWDsZW14OwDlFUXW1aw==
+  react-native-screens@~2.9.0:
+    version "2.9.0"
+    resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.9.0.tgz#ead2843107ba00fee259aa377582e457c74f1f3b"
+    integrity sha512-5MaiUD6HA3nzY3JbVI8l3V7pKedtxQF3d8qktTVI0WmWXTI4QzqOU8r8fPVvfKo3MhOXwhWBjr+kQ7DZaIQQeg==
   
   react-native-web@~0.13.12:
     version "0.13.13"

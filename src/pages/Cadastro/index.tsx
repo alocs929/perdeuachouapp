@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import {
   Text,
-  View,
   CheckBox,
   ScrollView,
   KeyboardAvoidingView
@@ -18,8 +17,7 @@ import {
   InputField,
   ButtonLoginText,
   ButtonLogin,
-  FieldCheckBox,
-  SafeAreaViewContainer
+  FieldCheckBox
 } from './styles';
 
 import { useNavigation } from '@react-navigation/native';
@@ -43,6 +41,7 @@ function Cadastro() {
       nome,
       telefone
     });
+
     console.log("Cadastrou");
     console.log(response);
   }

@@ -8,6 +8,7 @@ import Cadastro from '../pages/Cadastro'
 
 
 import DrawerNavigator from './DrawerNavigator';
+import Profile from '../pages/Profile';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -15,9 +16,9 @@ function AppStack() {
   return (
     <NavigationContainer>
       <Navigator screenOptions={{ headerShown: false }}>
+        {/* <Screen name="Profile" component={Profile} /> */}
         <Screen name="Login" component={Login} />
         <Screen name="Cadastro" component={Cadastro} />
-        {/* <Screen name="CadastroObjeto" component={CadastroObjeto}/> */}
         <Screen name="DrawerNavigator" component={DrawerNavigator} />
       </Navigator>
     </NavigationContainer>
