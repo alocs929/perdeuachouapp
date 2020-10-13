@@ -4,17 +4,19 @@ import { getBottomSpace } from 'react-native-iphone-x-helper';
 export const SafeAreaViewContainer =  styled.SafeAreaView`
 
 `;
-export const Container = styled.View`
+export const Container = styled.ScrollView`
 
-  flex: 1;
+  /* flex: 1;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 `;
 
 export const Title = styled.Text`
-  font-size: 35px;
+  width: 100%;
+  font-size: 30px;
   font-weight: bold;
-  margin-bottom: 80px;
+  text-align: center;
+  /* margin-bottom: 80px; */
 `;
 
 
@@ -66,17 +68,20 @@ export const ButtonLogin = styled.TouchableOpacity`
 export const ButtonLoginText = styled.Text`
   font-size: 25px;
   color: #fff;
+  width: 100%;
+  text-align: center;
 `;
 
 export const CreateAccountButton = styled.TouchableOpacity`
-  position: absolute;
-
+  /* position: absolute; */
+  margin-top: 10px;
+  width: 80%;
   background-color: #f1f1f1;
   left: 0;
   bottom: 0;
   right: 0;
   border-top-width: 1px;
-  padding: 10px 0 ${16 + getBottomSpace()}px;
+  padding: 10px 0 ${10 + getBottomSpace()}px;
 
   justify-content: center;
   align-items: center;
@@ -87,5 +92,8 @@ export const CreateAccountButtonText = styled.Text`
   justify-content: center;
   align-items: center;
   color: #ff9000;
+  text-align: center;
+  width: 100%;
+  
 `;
 

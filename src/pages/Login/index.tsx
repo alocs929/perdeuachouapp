@@ -77,7 +77,9 @@ const Login: React.FC = () => {
 
   }
 
-
+  function testeLoginHandle(){
+    navigation.navigate('DrawerNavigator');
+  }
 
   return(
   <>
@@ -114,7 +116,8 @@ const Login: React.FC = () => {
 
 
       <ButtonLogin
-        onPress={handleSubmit}
+        // onPress={handleSubmit}
+        onPress={testeLoginHandle}
       >
         <ButtonLoginText>Entrar</ButtonLoginText>
       </ButtonLogin>
@@ -123,7 +126,12 @@ const Login: React.FC = () => {
     </Container>
 
     <CreateAccountButton>
-      <Text>Ainda não possui uma conta?</Text>
+      <Text style={{
+        width: '100%', 
+        textAlign: 'center' 
+      }}>
+        Ainda não possui uma conta?
+      </Text>
       <CreateAccountButtonText
         onPress = {()=> navigation.navigate('Cadastro')}
       >

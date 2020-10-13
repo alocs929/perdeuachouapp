@@ -55,7 +55,14 @@ function Cadastro() {
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={{ flex: 1 }}
       >
-        <Container>
+        <Container
+          contentContainerStyle={{
+            paddingHorizontal: 16,
+            paddingBottom: 16,
+            marginTop: 10,
+            alignItems: 'center'
+          }}
+        >
           <Title>Cadastro de Usuário</Title>
 
           <Field>
@@ -126,16 +133,27 @@ function Cadastro() {
             <ButtonLoginText>Continue</ButtonLoginText>
           </ButtonLogin>
 
+        <CreateAccountButton onPress={() => navigation.navigate('Login')}>
+          <Text style={{ 
+            width: '100%', 
+            textAlign: 'center' 
+            }}>
+            Já possui uma conta?
+          </Text>
+          <CreateAccountButtonText>
+            <Text style={{ color: 'red' }}>Sign In</Text>
+          </CreateAccountButtonText>
+        </CreateAccountButton>
         </Container>
       </ScrollView>
       </KeyboardAvoidingView>
 
-      <CreateAccountButton onPress={() => navigation.navigate('Login')}>
+      {/* <CreateAccountButton onPress={() => navigation.navigate('Login')}>
         <Text>Já possui uma conta?</Text>
         <CreateAccountButtonText>
           <Text style={{ color: 'red' }}>Sign In</Text>
         </CreateAccountButtonText>
-      </CreateAccountButton>
+      </CreateAccountButton> */}
 
     </>
   );

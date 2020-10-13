@@ -1,17 +1,17 @@
 import styled from 'styled-components/native';
 
 
-export const Container = styled.View`
-  flex: 1;
-  align-items: center;
+export const Container = styled.ScrollView`
+  /* flex: 1;
+  align-items: center; */
   /* justify-content: center; */
-  padding-top: 10%;
+  /* padding-top: 10%; */
   
 `;
 
 export const Body = styled.View`
     width: 100%;
-    padding: 5%;
+    /* padding: 5%; */
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
@@ -19,6 +19,7 @@ export const Body = styled.View`
 
 export const SideContainer = styled.View`
     width: 48%;
+    /* flex: 1; */
     height: 100%;
 `;
 
@@ -32,13 +33,13 @@ export const LineVertical = styled.View`
 
 export const ObjetoHead = styled.View`
     width: 100%;
-    height: 20%;
+    /* height: 20%; */
 `;
 
 export const TitlePrimary = styled.Text`
     font-size: 20px;
     text-align: center;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 `;
 
 export const TitleLabel = styled.Text`
@@ -56,7 +57,8 @@ export const Lista = styled.View`
 
 export const ListaItem = styled.View`
     width: 100%;
-    flex-direction: row;
+    margin-bottom: 5px;
+    /* flex-direction: row; */
 `;
 
 export const Topico = styled.Text`
@@ -71,7 +73,7 @@ export const Descricao = styled.Text`
 export const SuccessButton = styled.TouchableOpacity`
   background-color: #0fd143;
   width: 30%;
-  height: 70%;
+  /* height: 70%; */
   padding: 8px;
   justify-content: center;
   align-items: center;
@@ -82,7 +84,7 @@ export const SuccessButton = styled.TouchableOpacity`
 export const DangerButton = styled.TouchableOpacity`
   background-color: #de2100;
   width: 30%;
-  height: 70%;
+  /* height: 70%; */
   padding: 8px;
   justify-content: center;
   align-items: center;
@@ -92,7 +94,7 @@ export const DangerButton = styled.TouchableOpacity`
 export const PrimaryButton = styled.TouchableOpacity`
   background-color: #f7ae0f;
   width: 30%;
-  height: 70%;
+  /* height: 70%; */
   padding: 8px;
   justify-content: center;
   align-items: center;
@@ -109,7 +111,7 @@ export const ButtonText = styled.Text`
 `;
 
 export const PerdidoNav = styled.View`
-    margin-top: 10px;
+    /* margin-top: 10px; */
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
@@ -126,12 +128,15 @@ export const PerdidoNavBtn = styled.TouchableOpacity`
 `;
 
 export const Footer = styled.View`
-    border: 1px solid #ff6b6b;
+    /* background-color: pink; */
+    padding: 5px;
+    border-top-width: 1px;
+    border-top-color: #ff6b6b;
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    height: 10%;
+    height: 8%;
     flex-direction: row;
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
 `;
