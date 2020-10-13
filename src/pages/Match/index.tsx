@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {View, Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
@@ -24,7 +24,21 @@ import {
     PerdidoNavBtn
 } from './styles';
 
+import api from '../../services/api';
+
 function Match (){
+    const [objeto, setObjeto] = useState({});
+    const [comparados, setComparados] = useState([]);
+
+    async function getMatch(){
+        const response = await api.get('match');
+        if (response.status){
+            setObjeto(response.data.objeto);
+            setComparados(response.data.comparados);
+            // retornar
+        }
+    }
+
     return (
         <>
             <Container 

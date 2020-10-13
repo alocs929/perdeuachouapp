@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {View, Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
@@ -16,8 +16,22 @@ import {
     Descricao
 } from './styles';
 
+import api from '../../services/api';
+
 function DetalhesObjeto (){
+
+    const [objeto, setObjeto] = useState({});
+
+    async function getObjeto(){
+        const response = await api.get('objeto');
+        if (response.status){
+            setObjeto(response.data);
+            // retornar
+        }
+    }
+
     const navigation = useNavigation();
+    
     return (
         <Container>
             <PageHeader title="Detalhes" />
