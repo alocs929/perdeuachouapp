@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 
+// import Constants from 'expo-constants';
+// import * as Permissions from 'expo-permissions' ;
+import * as ImagePicker from 'expo-image-picker' ;
 
 import {
     Container,
@@ -12,7 +15,8 @@ import {
     ButtonSaveText,
     MensagemSucesso,
     Select,
-    SelectBorder
+    SelectBorder,
+    BotaoImagem
 } from './styles';
 import {Text, TextInput, Picker } from "react-native";
 import api from '../../services/api';
@@ -24,9 +28,9 @@ const CadastroObjetos: React.FC = () => {
     const [descricao, setDescricao] = useState('');
     const [encontradoEm, setEncontradoEm] = useState('');
     const [id, setId] = useState(1);
-    const [images, setimages] = useState([{"id":2, "link":"string"}]);
+    const [images, setImages] = useState({});
     const [status, setStatus] = useState('AGUARDANDO');
-    const [tipo, setTipo] = useState('ACHADO');
+    const [tipo, setTipo] = useState('PERDIDO');
     const [usuario, setUsuario] = useState(
         {
             "cpfCpnj": "string",
@@ -48,17 +52,27 @@ const CadastroObjetos: React.FC = () => {
           '@PerdeuAchou:id',
           '@PerdeuAchou:token',
         ]);
-
-
-
         console.log(idString[1], token[1]);
-
-        // setData({id: Number(idString[1]), token[1]});
-
       }
     }, []);
 
+    async function imagePickerCall () {
+        const data = await ImagePicker.launchImageLibraryAsync({});
 
+        if (data.cancelled === true){
+            return;
+        }
+
+        if (!data.uri){
+            return;
+        }
+
+        setImages(data);
+    }
+
+    function carregarImagem(){
+        console.log('carregar imagem');
+    }
 
     function cleanFields(){
         setCategoria('');
@@ -103,6 +117,11 @@ const CadastroObjetos: React.FC = () => {
                     Objeto cadastrado com sucesso
                 </MensagemSucesso>
             }
+
+            
+            <BotaoImagem onPress={imagePickerCall}>
+                <ButtonSaveText>Escolha uma imagem</ButtonSaveText>
+            </BotaoImagem>
 
             <Label>Categoria</Label>
             <CampoTexto

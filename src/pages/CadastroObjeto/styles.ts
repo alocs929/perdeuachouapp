@@ -32,6 +32,17 @@ export const CampoTexto = styled.TextInput`
     margin-bottom: 4px;
 `;
 
+export const BotaoImagem = styled.TouchableOpacity`
+    width: 90%;
+    /* border: solid 1px #121212; */
+    font-size: 16px;
+    padding: 10px 4px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    background-color:  #ff6b6b;
+
+`;
+
 export const MensagemSucesso = styled.Text`
   width: 100%;
   text-align: center;
@@ -51,6 +62,8 @@ export const ButtonSaveText = styled.Text`
   text-align: center;
   font-size: 14px;
 `;
+
+
 
 export const SelectBorder = styled.View`
   width: 90%;
