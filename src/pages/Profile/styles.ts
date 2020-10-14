@@ -22,7 +22,7 @@ export const FieldBox = styled.View`
 `;
 
 export const Field = styled.View`
-  margin-top: 20;
+  margin-top: 20px;
   /* flex-direction: row; */
   /* align-items: center; */
 `;
