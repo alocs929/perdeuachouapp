@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from '../pages/Login'
 import Cadastro from '../pages/Cadastro'
+import Inicial from '../pages/Inicial'
 // import CadastroObjeto from '../pages/CadastroObjeto'
 
 
@@ -19,6 +20,11 @@ function AppStack() {
         {/* <Screen name="Profile" component={Profile} /> */}
         <Screen name="Login" component={Login} />
         <Screen name="Cadastro" component={Cadastro} />
+<<<<<<< HEAD
+        <Screen name="Iniciar" component={Inicial} />
+        {/* <Screen name="CadastroObjeto" component={CadastroObjeto}/> */}
+=======
+>>>>>>> 11219e782928a70a1f7c39519c86f29c66e8c526
         <Screen name="DrawerNavigator" component={DrawerNavigator} />
       </Navigator>
     </NavigationContainer>

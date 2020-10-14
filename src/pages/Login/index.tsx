@@ -81,6 +81,11 @@ const Login: React.FC = () => {
     navigation.navigate('DrawerNavigator');
   }
 
+// <<<<<<< HEAD
+//   return (
+//     <>
+
+// =======
   return(
   <>
     <Container>
@@ -140,6 +145,7 @@ const Login: React.FC = () => {
     </CreateAccountButton>
 
   </>
+      
   );
 }
 export default Login;
