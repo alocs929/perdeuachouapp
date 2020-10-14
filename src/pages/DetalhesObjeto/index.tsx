@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {View, Text} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
 
@@ -18,17 +19,38 @@ import {
 
 import api from '../../services/api';
 
-function DetalhesObjeto (){
+const  DetalhesObjeto: React.FC = () =>{
 
-    const [objeto, setObjeto] = useState({});
+    const [objeto, setObjeto] = useState({
 
-    async function getObjeto(){
-        const response = await api.get('objeto');
-        if (response.status){
-            setObjeto(response.data);
-            // retornar
+    });
+    const [data,setData] = useState({id: Number, token: String});
+
+    // async function getObjeto(){
+    //     const response = await api.get('objeto');
+    //     if (response.status){
+    //         setObjeto(response.data);
+    //         // retornar
+    //     }
+    // }
+
+    useEffect(() => {
+        async function loadStorageData(): Promise<void> {
+          const [idString, token] = await AsyncStorage.multiGet([
+            '@PerdeuAchou:id',
+            '@PerdeuAchou:token',
+          ]);
+          console.log(idString[1], token[1]);
         }
-    }
+
+        async function getObjeto(){
+            const response = await api.get('objeto');
+            if (response.status){
+                setObjeto(response.data);
+                // retornar
+            }
+        }
+      }, []);
 
     const navigation = useNavigation();
     
@@ -41,7 +63,7 @@ function DetalhesObjeto (){
                 <Lista>
                     <ListaItem>
                         <Topico>Data: </Topico>
-                        <Descricao>30/07/2020</Descricao>
+                        <Descricao>26/04/2020</Descricao>
                     </ListaItem>
                     <ListaItem>
                         <Topico>Categoria: </Topico>

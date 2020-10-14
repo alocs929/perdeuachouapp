@@ -48,7 +48,6 @@ const Login: React.FC = () => {
   const navigation = useNavigation();
 
   async function handleSubmit (){
-
     const body = `username=${email}&password=${password}&grant_type=password`;
 
     const response = await api.post('/oauth/token', body, {
@@ -64,17 +63,10 @@ const Login: React.FC = () => {
       const id = response.data.id;
       const token = response.data.access_token;
 
-      // console.log('############################')
-      // console.log(id)
-      // console.log(token)
-      // console.log('############################')
-
       await AsyncStorage.setItem('@PerdeuAchou:token', token);
       await AsyncStorage.setItem('@PerdeuAchou:id', String(id));
       navigation.navigate('DrawerNavigator');
-
     }
-
   }
 
   function testeLoginHandle(){
