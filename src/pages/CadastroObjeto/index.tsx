@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-community/async-storage';
+
+// import Constants from 'expo-constants';
+// import * as Permissions from 'expo-permissions' ;
+import * as ImagePicker from 'expo-image-picker' ;
 
 import {
     Container,
@@ -8,9 +13,12 @@ import {
     Label,
     ButtonSave,
     ButtonSaveText,
-    MensagemSucesso
+    MensagemSucesso,
+    Select,
+    SelectBorder,
+    BotaoImagem
 } from './styles';
-import {Text, TextInput } from "react-native";
+import {Text, TextInput, Picker } from "react-native";
 import api from '../../services/api';
 import PageHeader from '../../components/PageHeader';
 const CadastroObjetos: React.FC = () => {
@@ -20,9 +28,9 @@ const CadastroObjetos: React.FC = () => {
     const [descricao, setDescricao] = useState('');
     const [encontradoEm, setEncontradoEm] = useState('');
     const [id, setId] = useState(1);
-    const [images, setimages] = useState([{"id":2, "link":"string"}]);
+    const [images, setImages] = useState({});
     const [status, setStatus] = useState('AGUARDANDO');
-    const [tipo, setTipo] = useState('ACHADO');
+    const [tipo, setTipo] = useState('PERDIDO');
     const [usuario, setUsuario] = useState(
         {
             "cpfCpnj": "string",
@@ -35,8 +43,36 @@ const CadastroObjetos: React.FC = () => {
             "telefone": "string"
         }
     );
-
     const navigation = useNavigation();
+    const [data,setData] = useState({id: Number, token: String});
+
+    useEffect(() => {
+      async function loadStorageData(): Promise<void> {
+        const [idString, token] = await AsyncStorage.multiGet([
+          '@PerdeuAchou:id',
+          '@PerdeuAchou:token',
+        ]);
+        console.log(idString[1], token[1]);
+      }
+    }, []);
+
+    async function imagePickerCall () {
+        const data = await ImagePicker.launchImageLibraryAsync({});
+
+        if (data.cancelled === true){
+            return;
+        }
+
+        if (!data.uri){
+            return;
+        }
+
+        setImages(data);
+    }
+
+    function carregarImagem(){
+        console.log('carregar imagem');
+    }
 
     function cleanFields(){
         setCategoria('');
@@ -67,6 +103,7 @@ const CadastroObjetos: React.FC = () => {
     return (
       <>
         <PageHeader title="Cadastro de Objetos"/>
+
         <Container>
             <Titulo>
                 Cadastrar Pertence
@@ -80,6 +117,12 @@ const CadastroObjetos: React.FC = () => {
                     Objeto cadastrado com sucesso
                 </MensagemSucesso>
             }
+
+            
+            <BotaoImagem onPress={imagePickerCall}>
+                <ButtonSaveText>Escolha uma imagem</ButtonSaveText>
+            </BotaoImagem>
+
             <Label>Categoria</Label>
             <CampoTexto
                 placeholder="Tipo de pertence"
@@ -100,6 +143,25 @@ const CadastroObjetos: React.FC = () => {
                 value={encontradoEm}
                 onChangeText={text => setEncontradoEm(text)}
                 />
+
+            <Label>Tipo do objeto</Label>
+            <SelectBorder>
+                <Select 
+                    selectedValue={tipo}
+                    onValueChange={
+                        (itemValor, itemIndex) => {
+                            setTipo(itemValor);
+                        }
+                    }
+                >
+                    <Picker.Item 
+                        label="Perdido"
+                        value="Perdido" />
+                    <Picker.Item 
+                        label="Achado"
+                        value="Achado" />
+                </Select>
+            </SelectBorder>
 
             <ButtonSave onPress={handleFieldsSubmit}>
                 <ButtonSaveText>

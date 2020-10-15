@@ -11,7 +11,6 @@ import { useNavigation } from '@react-navigation/native';
 
 interface PageHeaderProps {
   title: string;
-
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
@@ -23,8 +22,10 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
   return (
     <Container>
 
-      <BoxIconLeft onPress={() => navigation.openDrawer()}>
-        <Ionicons name="ios-menu" size={35} color={'white'} />
+      <BoxIconLeft
+      // onPress={() =>
+      >
+        <Ionicons name="ios-menu" size={35} color={'#000'} />
 
       </BoxIconLeft>
 

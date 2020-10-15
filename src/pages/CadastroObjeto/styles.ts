@@ -32,23 +32,47 @@ export const CampoTexto = styled.TextInput`
     margin-bottom: 4px;
 `;
 
+export const BotaoImagem = styled.TouchableOpacity`
+    width: 90%;
+    /* border: solid 1px #121212; */
+    font-size: 16px;
+    padding: 10px 4px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    background-color:  #ff6b6b;
+
+`;
+
 export const MensagemSucesso = styled.Text`
   width: 100%;
   text-align: center;
 `;
 
 export const ButtonSave = styled.TouchableOpacity`
-    
-    margin-top: 10%;
-    width: 90%;
-    background-color:  #ff9000;
-    padding: 8px;
-    border-radius: 4px;
+  margin-top: 10%;
+  width: 90%;
+  background-color:  #ff6b6b;
+  padding: 8px;
+  border-radius: 4px;
 `;
 
 export const ButtonSaveText = styled.Text`
-    width: 100%;
-    color:  #fff;
-    text-align: center;
-    font-size: 14px;
+  width: 100%;
+  color:  #fff;
+  text-align: center;
+  font-size: 14px;
+`;
+
+
+
+export const SelectBorder = styled.View`
+  width: 90%;
+  border: solid 1px #121212;
+  border-radius: 4px;
+`;
+
+export const Select = styled.Picker`
+  width: 100%;
+  
+  /* height: 16px; */
 `;

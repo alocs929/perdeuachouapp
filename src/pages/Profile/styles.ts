@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
+
 export const Container = styled.ScrollView`
   /* flex: 1; */
 `;
@@ -21,7 +22,7 @@ export const FieldBox = styled.View`
 `;
 
 export const Field = styled.View`
-  margin-top: 20;
+  margin-top: 20px;
   /* flex-direction: row; */
   /* align-items: center; */
 `;

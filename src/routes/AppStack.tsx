@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from '../pages/Login'
 import Cadastro from '../pages/Cadastro'
-import Inicial from '../pages/Inicial'
+
 // import CadastroObjeto from '../pages/CadastroObjeto'
 
 
