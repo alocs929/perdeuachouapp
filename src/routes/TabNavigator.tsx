@@ -6,8 +6,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 import Achados from '../pages/Achados'
 import PageHeader from '../components/PageHeader';
-import Match from '../pages/Match'
-
+import Perdidos from '../pages/Perdidos'
 const Tab = createMaterialTopTabNavigator();
 
 const DrawerNavigator: React.FC = () => {
@@ -17,7 +16,7 @@ const DrawerNavigator: React.FC = () => {
 
       <Tab.Navigator style={{ marginTop: 0 }}  >
         <Tab.Screen name="Achados" component={Achados} />
-        <Tab.Screen name="Perdidos" component={Match} />
+        <Tab.Screen name="Perdidos" component={Perdidos} />
       </Tab.Navigator>
     </>
   );

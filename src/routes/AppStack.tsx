@@ -14,6 +14,7 @@ import Profile from '../pages/Profile';
 import TabNavigator from './TabNavigator'
 const { Navigator, Screen } = createStackNavigator();
 
+
 function AppStack() {
   return (
     <NavigationContainer>
@@ -21,8 +22,8 @@ function AppStack() {
         {/* <Screen name="Profile" component={Profile} /> */}
         <Screen name="Login" component={Login} />
         <Screen name="CadastroObjeto" component={CadastroObjeto} />
-        <Screen name="Cadastro" component={Cadastro} />
         <Screen name="DrawerNavigator" component={DrawerNavigator} />
+        <Screen name="Cadastro" component={Cadastro} />
         <Screen name="Inicial" component={TabNavigator} />
       </Navigator>
     </NavigationContainer>

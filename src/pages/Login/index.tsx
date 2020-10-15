@@ -65,12 +65,12 @@ const Login: React.FC = () => {
 
       await AsyncStorage.setItem('@PerdeuAchou:token', token);
       await AsyncStorage.setItem('@PerdeuAchou:id', String(id));
-      navigation.navigate('DrawerNavigator');
+      navigation.navigate('Inicial');
     }
   }
 
   function testeLoginHandle() {
-    navigation.navigate('Inicial');
+    navigation.navigate('DrawerNavigator');
   }
 
   // <<<<<<< HEAD

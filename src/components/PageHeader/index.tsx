@@ -1,13 +1,14 @@
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 
+
 import {
   Container,
   Title,
   BoxIconLeft,
   BoxIconRight
 } from './styles';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, DrawerActions } from '@react-navigation/native';
 
 interface PageHeaderProps {
   title: string;
@@ -23,7 +24,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
     <Container>
 
       <BoxIconLeft
-      // onPress={() =>
+        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
       >
         <Ionicons name="ios-menu" size={35} color={'white'} />
 

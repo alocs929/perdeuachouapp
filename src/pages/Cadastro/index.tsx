@@ -35,17 +35,23 @@ function Cadastro() {
   const navigation = useNavigation();
 
   async function handleSubmit() {
-    const response = await api.post('/usuario', {
-      cpfCpnj: cpfCnpj,
-      email,
-      nome,
-      telefone
-    });
+    try {
 
-    console.log("Cadastrou");
-    console.log(response);
+      const response = await api.post('/usuario', {
+        cpfCpnj: cpfCnpj,
+        email,
+        nome,
+        senha: password,
+        telefone
+      });
+      navigation.navigate('Login')
+    }
+    catch (error) {
+      console.log(error)
+    }
   }
 
+  //contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
   return (
     <>
       <KeyboardAvoidingView
@@ -53,96 +59,91 @@ function Cadastro() {
       >
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+          contentContainerStyle={{
+
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
         >
-          <Container
-            contentContainerStyle={{
-              paddingHorizontal: 16,
-              paddingBottom: 16,
-              marginTop: 10,
-              alignItems: 'center'
-            }}
-          >
-            <Title>Cadastro de Usuário</Title>
+          <Title>Cadastro de Usuário</Title>
 
-            <Field>
-              <TitleField>Nome</TitleField>
-              <InputField
-                placeholder="nome..."
-                value={nome}
-                onChangeText={text => setNome(text)}
-              ></InputField>
-            </Field>
+          <Field>
+            <TitleField>Nome</TitleField>
+            <InputField
+              placeholder="nome..."
+              value={nome}
+              onChangeText={text => setNome(text)}
+            ></InputField>
+          </Field>
 
 
-            <Field>
-              <TitleField>Email</TitleField>
-              <InputField
-                placeholder="email..."
-                value={email}
-                onChangeText={text => setEmail(text)}
-              ></InputField>
-            </Field>
+          <Field>
+            <TitleField>Email</TitleField>
+            <InputField
+              placeholder="email..."
+              value={email}
+              onChangeText={text => setEmail(text)}
+            ></InputField>
+          </Field>
 
-            <Field>
-              <TitleField>Senha</TitleField>
-              <InputField
-                secureTextEntry={true}
-                placeholder="senha..."
-                value={password}
-                onChangeText={text => setPassword(text)}
-              ></InputField>
-            </Field>
+          <Field>
+            <TitleField>Senha</TitleField>
+            <InputField
+              secureTextEntry={true}
+              placeholder="senha..."
+              value={password}
+              onChangeText={text => setPassword(text)}
+            ></InputField>
+          </Field>
 
-            <Field>
-              <TitleField>CPF/CNPJ</TitleField>
-              <InputField
-                placeholder="cpf/cnpj..."
-                value={cpfCnpj}
-                onChangeText={text => setCpfCnpj(text)}
-              ></InputField>
-            </Field>
+          <Field>
+            <TitleField>CPF/CNPJ</TitleField>
+            <InputField
+              placeholder="cpf/cnpj..."
+              value={cpfCnpj}
+              onChangeText={text => setCpfCnpj(text)}
+            ></InputField>
+          </Field>
 
-            <Field>
-              <TitleField>Telefone</TitleField>
-              <InputField
-                placeholder="telefone..."
-                value={telefone}
-                onChangeText={text => setTelefone(text)}
-              ></InputField>
-            </Field>
+          <Field>
+            <TitleField>Telefone</TitleField>
+            <InputField
+              placeholder="telefone..."
+              value={telefone}
+              onChangeText={text => setTelefone(text)}
+            ></InputField>
+          </Field>
 
-            <FieldCheckBox>
-              <CheckBox
-                value={check}
-                onValueChange={setCheck}
-              ></CheckBox>
-              <Text>
-                Eu concordo com os
+          <FieldCheckBox>
+            <CheckBox
+              value={check}
+              onValueChange={setCheck}
+            ></CheckBox>
+            <Text>
+              Eu concordo com os
             <Text style={{ color: 'red' }}> Termos de Serviço</Text> e
             <Text style={{ color: 'red' }}> Politica de Privacidade</Text>.
           </Text>
 
-            </FieldCheckBox>
+          </FieldCheckBox>
 
 
 
-            <ButtonLogin
-              onPress={handleSubmit}
-            >
-              <ButtonLoginText>Continue</ButtonLoginText>
-            </ButtonLogin>
+          <ButtonLogin
+            onPress={handleSubmit}
+          >
+            <ButtonLoginText>Continue</ButtonLoginText>
+          </ButtonLogin>
 
 
 
-            <CreateAccountButton onPress={() => navigation.navigate('Login')}>
-              <Text>Já possui uma conta?</Text>
-              <CreateAccountButtonText>
-                <Text style={{ color: 'red' }}>Sign In</Text>
-              </CreateAccountButtonText>
-            </CreateAccountButton>
+          <CreateAccountButton onPress={() => navigation.navigate('Login')}>
+            <Text>Já possui uma conta?</Text>
+            <CreateAccountButtonText>
+              <Text style={{ color: 'red' }}>Sign In</Text>
+            </CreateAccountButtonText>
+          </CreateAccountButton>
 
-          </Container>
 
         </ScrollView>
 

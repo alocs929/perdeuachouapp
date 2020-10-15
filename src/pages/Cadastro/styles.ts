@@ -6,8 +6,7 @@ export const SafeAreaViewContainer = styled.SafeAreaView`
 `;
 export const Container = styled.ScrollView`
 
-  align-items: center;
-  justify-content: center; */
+
 `;
 
 export const Title = styled.Text`
@@ -71,15 +70,9 @@ export const ButtonLoginText = styled.Text`
 `;
 
 export const CreateAccountButton = styled.TouchableOpacity`
-<<<<<<< HEAD
-  margin-top: 20px;
-  position: relative;
-
-=======
   /* position: absolute; */
   margin-top: 10px;
   width: 80%;
->>>>>>> 8a772b3c32ed67cf416a500023c42c5cb6021505
   background-color: #f1f1f1;
 
   border-top-width: 1px;
