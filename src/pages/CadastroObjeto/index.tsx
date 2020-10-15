@@ -70,9 +70,7 @@ const CadastroObjetos: React.FC = () => {
         setImages(data);
     }
 
-    function carregarImagem(){
-        console.log('carregar imagem');
-    }
+  
 
     function cleanFields(){
         setCategoria('');
@@ -105,9 +103,7 @@ const CadastroObjetos: React.FC = () => {
         <PageHeader title="Cadastro de Objetos"/>
 
         <Container>
-            <Titulo>
-                Cadastrar Pertence
-            </Titulo>
+            
             {/* <Label>Data</Label>
             <CampoTexto placeholder="Data em que o pertence foi encontrado" /> */}
             {

@@ -1,4 +1,5 @@
 import React from 'react'
+// import 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons'
 
 import {
@@ -7,7 +8,8 @@ import {
   BoxIconLeft,
   BoxIconRight
 } from './styles';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, NavigationContainer, DrawerActions } from '@react-navigation/native';
+// import {  } from '@react-navigation/drawer';
 
 interface PageHeaderProps {
   title: string;
@@ -23,7 +25,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
     <Container>
 
       <BoxIconLeft 
-        // onPress={() => 
+        onPress={() => {navigation.dispatch(DrawerActions.toggleDrawer())}}
       >
         <Ionicons name="ios-menu" size={35} color={'#000'} />
 

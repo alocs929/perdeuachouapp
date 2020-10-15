@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -61,7 +62,7 @@ const CadastroObjetos: React.FC = () => {
 
 
 
-        <ButtonAddItem>
+        <ButtonAddItem onPress={() => {navigation.navigate('Cadastro de Objetos')}}>
           <ButtonSaveText>
             Adicionar Item
           </ButtonSaveText>

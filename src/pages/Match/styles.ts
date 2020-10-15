@@ -135,7 +135,7 @@ export const Footer = styled.View`
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    height: 8%;
+    height: 12%;
     flex-direction: row;
     /* position: absolute; */
     bottom: 0;

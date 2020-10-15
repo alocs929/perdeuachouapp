@@ -4,9 +4,6 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   align-items: center;
-  /* justify-content: center; */
-  padding-top: 10%;
-  
 `;
 
 export const BodyObjeto = styled.View`
@@ -44,7 +41,7 @@ export const Footer = styled.View`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 15%;
+    height: 12%;
     position: absolute;
     bottom: 0;
 `;

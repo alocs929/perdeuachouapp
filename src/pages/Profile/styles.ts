@@ -19,10 +19,13 @@ export const FieldBox = styled.View`
   flex:1;
   align-items: flex-start;
   margin-left: 0;
+  /* background-color: red; */
+  width: 80%;
 `;
 
 export const Field = styled.View`
   margin-top: 20px;
+  width: 100%;
   /* flex-direction: row; */
   /* align-items: center; */
 `;
@@ -35,4 +38,5 @@ export const TitleField = styled.Text`
 `;
 export const ContentField = styled.Text`
   font-size: 20px;
+  width: 100%;
 `;

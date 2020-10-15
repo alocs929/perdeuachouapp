@@ -35,12 +35,14 @@ function Cadastro() {
   const navigation = useNavigation();
 
   async function handleSubmit() {
-    const response = await api.post('/usuario', {
-      cpfCpnj: cpfCnpj,
-      email,
+    let usuario = {
       nome,
+      email,
+      password,
+      cpfCnpj,
       telefone
-    });
+    }
+    const response = await api.post('/usuario', usuario);
 
     console.log("Cadastrou");
     console.log(response);
