@@ -25,7 +25,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
       <BoxIconLeft
       // onPress={() =>
       >
-        <Ionicons name="ios-menu" size={35} color={'#000'} />
+        <Ionicons name="ios-menu" size={35} color={'white'} />
 
       </BoxIconLeft>
 

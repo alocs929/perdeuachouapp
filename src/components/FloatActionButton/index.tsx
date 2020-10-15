@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-const FloatActionButton: React.FC = () => {
+const FloatActionButton: React.FC = (props) => {
   const navigation = useNavigation();
 
   // console.log(props);
@@ -17,7 +17,10 @@ const FloatActionButton: React.FC = () => {
       style={styles.fab}
       color="white"
       icon="plus"
-      onPress={() => console.log('Pressed')}
+      onPress={() => {
+        console.log("I am see the props: ")
+        navigation.navigate(props.screenDirection)
+      }}
     />
   );
 }

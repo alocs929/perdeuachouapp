@@ -4,11 +4,9 @@ import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 
-import CadastroObjeto from '../pages/CadastroObjeto';
-import Profile from '../pages/Profile';
-import Inicial from '../pages/Inicial'
-import Cadastro from '../pages/Cadastro'
+import Achados from '../pages/Achados'
 import PageHeader from '../components/PageHeader';
+import Match from '../pages/Match'
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -18,8 +16,8 @@ const DrawerNavigator: React.FC = () => {
       <PageHeader title="Pagina Inicial" />
 
       <Tab.Navigator style={{ marginTop: 0 }}  >
-        <Tab.Screen name="Achados" component={Inicial} />
-        <Tab.Screen name="Perdidos" component={Cadastro} />
+        <Tab.Screen name="Achados" component={Achados} />
+        <Tab.Screen name="Perdidos" component={Match} />
       </Tab.Navigator>
     </>
   );

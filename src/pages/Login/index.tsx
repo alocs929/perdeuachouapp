@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import { Text, View, SafeAreaView } from "react-native";
-=======
-import {Text, View, SafeAreaView } from "react-native";
->>>>>>> 8a772b3c32ed67cf416a500023c42c5cb6021505
 
 import {
   Container,
@@ -51,14 +47,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
 
-<<<<<<< HEAD
-  function handleSubmit() {
-
-    console.log(email + password);
-
-  }
-=======
-  async function handleSubmit (){
+  async function handleSubmit() {
     const body = `username=${email}&password=${password}&grant_type=password`;
 
     const response = await api.post('/oauth/token', body, {
@@ -69,9 +58,8 @@ const Login: React.FC = () => {
     });
 
     console.log(response);
->>>>>>> 8a772b3c32ed67cf416a500023c42c5cb6021505
 
-    if (response.status == 200){
+    if (response.status == 200) {
       const id = response.data.id;
       const token = response.data.access_token;
 
@@ -81,20 +69,21 @@ const Login: React.FC = () => {
     }
   }
 
-  function testeLoginHandle(){
-    navigation.navigate('DrawerNavigator');
+  function testeLoginHandle() {
+    navigation.navigate('Inicial');
   }
 
-<<<<<<< HEAD
+  // <<<<<<< HEAD
+  //   return (
+  //     <>
+
+  // =======
   return (
     <>
-      {/* <SafeAreaView>
-    <ScrollView> */}
       <Container>
 
         <Logo source={logo}></Logo>
 
-        {/* <Title>LOGO</Title> */}
 
         <Field>
           <SubTitle>Seja bem vindo!</SubTitle>
@@ -124,25 +113,22 @@ const Login: React.FC = () => {
 
 
         <ButtonLogin
-          onPress={handleSubmit}
+          // onPress={handleSubmit}
+          onPress={testeLoginHandle}
         >
           <ButtonLoginText>Entrar</ButtonLoginText>
         </ButtonLogin>
 
 
-        <Text
-          style={{ color: 'red' }}
-          onPress={() => { navigation.navigate('DrawerNavigator') }}
-        >Ir para a Stack Navigation</Text>
-
-        <Text style={{ color: 'blue' }} onPress={() => { navigation.navigate('Inicial') }}>Ir para página iniciar</Text>
-
       </Container>
-      {/* </ScrollView>
-  </SafeAreaView> */}
 
       <CreateAccountButton>
-        <Text>Ainda não possui uma conta?</Text>
+        <Text style={{
+          width: '100%',
+          textAlign: 'center'
+        }}>
+          Ainda não possui uma conta?
+      </Text>
         <CreateAccountButtonText
           onPress={() => navigation.navigate('Cadastro')}
         >
@@ -151,73 +137,7 @@ const Login: React.FC = () => {
       </CreateAccountButton>
 
     </>
-=======
-// <<<<<<< HEAD
-//   return (
-//     <>
 
-// =======
-  return(
-  <>
-    <Container>
-
-      <Logo source={logo}></Logo>
-
-
-      <Field>
-        <SubTitle>Seja bem vindo!</SubTitle>
-        <TitleField>Email</TitleField>
-        <InputField
-          placeholder="email..."
-          value={email}
-          onChangeText={text => setEmail(text)}
-        ></InputField>
-      </Field>
-
-      <Field>
-        <TitleField>Senha</TitleField>
-        <InputField
-          secureTextEntry={true}
-          placeholder="senha..."
-          value={password}
-          onChangeText={text => setPassword(text)}
-        ></InputField>
-      </Field>
-
-
-
-      <Text
-      > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
-      </Text>
-
-
-      <ButtonLogin
-        // onPress={handleSubmit}
-        onPress={testeLoginHandle}
-      >
-        <ButtonLoginText>Entrar</ButtonLoginText>
-      </ButtonLogin>
-
-
-    </Container>
-
-    <CreateAccountButton>
-      <Text style={{
-        width: '100%', 
-        textAlign: 'center' 
-      }}>
-        Ainda não possui uma conta?
-      </Text>
-      <CreateAccountButtonText
-        onPress = {()=> navigation.navigate('Cadastro')}
-      >
-        <Text style={{color:'red'}}>Registrar</Text>
-      </CreateAccountButtonText>
-    </CreateAccountButton>
-
-  </>
-      
->>>>>>> 8a772b3c32ed67cf416a500023c42c5cb6021505
   );
 }
 export default Login;

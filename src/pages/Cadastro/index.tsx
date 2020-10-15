@@ -53,7 +53,7 @@ function Cadastro() {
       >
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1 }}
+          contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
         >
           <Container
             contentContainerStyle={{
@@ -147,22 +147,10 @@ function Cadastro() {
         </ScrollView>
 
 
-        <CreateAccountButton onPress={() => navigation.navigate('Login')}>
-          <Text style={{
-            width: '100%',
-            textAlign: 'center'
-          }}>
-            Já possui uma conta?
-          </Text>
-          <CreateAccountButtonText>
-            <Text style={{ color: 'red' }}>Sign In</Text>
-          </CreateAccountButtonText>
-        </CreateAccountButton>
-        </Container>
-    </ScrollView>
+
       </KeyboardAvoidingView >
 
-  {/* <CreateAccountButton onPress={() => navigation.navigate('Login')}>
+      {/* <CreateAccountButton onPress={() => navigation.navigate('Login')}>
         <Text>Já possui uma conta?</Text>
         <CreateAccountButtonText>
           <Text style={{ color: 'red' }}>Sign In</Text>
