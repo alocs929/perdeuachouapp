@@ -4,7 +4,7 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   /* justify-content: center; */
-  padding-top: 10%;
+  padding-top: 7%;
 
 `;
 
@@ -88,3 +88,9 @@ export const ButtonSaveText = styled.Text`
     font-weight:bold;
 
 `;
+export const ListContainer = styled.View`
+  display:flex;
+  justify-content: space-around;
+  width: 80%;
+
+`

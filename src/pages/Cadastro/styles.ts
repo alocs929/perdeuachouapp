@@ -1,22 +1,19 @@
 import styled from 'styled-components/native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
-export const SafeAreaViewContainer =  styled.SafeAreaView`
+export const SafeAreaViewContainer = styled.SafeAreaView`
 
 `;
 export const Container = styled.ScrollView`
 
-  /* flex: 1;
-  align-items: center;
-  justify-content: center; */
+
 `;
 
 export const Title = styled.Text`
-  width: 100%;
-  font-size: 30px;
+  margin-top: 60px;
+  font-size: 35px;
   font-weight: bold;
-  text-align: center;
-  /* margin-bottom: 80px; */
+  margin-bottom: 30px;
 `;
 
 
@@ -77,9 +74,7 @@ export const CreateAccountButton = styled.TouchableOpacity`
   margin-top: 10px;
   width: 80%;
   background-color: #f1f1f1;
-  left: 0;
-  bottom: 0;
-  right: 0;
+
   border-top-width: 1px;
   padding: 10px 0 ${10 + getBottomSpace()}px;
 
@@ -94,6 +89,6 @@ export const CreateAccountButtonText = styled.Text`
   color: #ff9000;
   text-align: center;
   width: 100%;
-  
+
 `;
 

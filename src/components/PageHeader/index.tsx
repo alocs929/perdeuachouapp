@@ -2,14 +2,14 @@ import React from 'react'
 // import 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons'
 
+
 import {
   Container,
   Title,
   BoxIconLeft,
   BoxIconRight
 } from './styles';
-import { useNavigation, NavigationContainer, DrawerActions } from '@react-navigation/native';
-// import {  } from '@react-navigation/drawer';
+import { useNavigation, DrawerActions } from '@react-navigation/native';
 
 interface PageHeaderProps {
   title: string;
@@ -24,10 +24,10 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
   return (
     <Container>
 
-      <BoxIconLeft 
-        onPress={() => {navigation.dispatch(DrawerActions.toggleDrawer())}}
+      <BoxIconLeft
+        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
       >
-        <Ionicons name="ios-menu" size={35} color={'#000'} />
+        <Ionicons name="ios-menu" size={35} color={'white'} />
 
       </BoxIconLeft>
 
@@ -36,7 +36,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
       </Title>
 
       <BoxIconRight onPress={() => console.log("notify")}>
-        <Ionicons name="ios-notifications-outline" size={35} color={'#000'} />
+        <Ionicons name="ios-notifications-outline" size={35} color={'white'} />
       </BoxIconRight>
     </Container>
   );

@@ -35,34 +35,34 @@ function Cadastro() {
   const navigation = useNavigation();
 
   async function handleSubmit() {
-    let usuario = {
-      nome,
-      email,
-      password,
-      cpfCnpj,
-      telefone
-    }
-    const response = await api.post('/usuario', usuario);
+    try {
 
-    console.log("Cadastrou");
-    console.log(response);
+      const response = await api.post('/usuario', {
+        cpfCpnj: cpfCnpj,
+        email,
+        nome,
+        senha: password,
+        telefone
+      });
+      navigation.navigate('Login')
+    }
+    catch (error) {
+      console.log(error)
+    }
   }
 
+  //contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
   return (
     <>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
       >
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={{ flex: 1 }}
-      >
-        <Container
+        <ScrollView
+          keyboardShouldPersistTaps="handled"
           contentContainerStyle={{
-            paddingHorizontal: 16,
-            paddingBottom: 16,
-            marginTop: 10,
-            alignItems: 'center'
+
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
         >
           <Title>Cadastro de Usuário</Title>
@@ -135,20 +135,21 @@ function Cadastro() {
             <ButtonLoginText>Continue</ButtonLoginText>
           </ButtonLogin>
 
-        <CreateAccountButton onPress={() => navigation.navigate('Login')}>
-          <Text style={{ 
-            width: '100%', 
-            textAlign: 'center' 
-            }}>
-            Já possui uma conta?
-          </Text>
-          <CreateAccountButtonText>
-            <Text style={{ color: 'red' }}>Sign In</Text>
-          </CreateAccountButtonText>
-        </CreateAccountButton>
-        </Container>
-      </ScrollView>
-      </KeyboardAvoidingView>
+
+
+          <CreateAccountButton onPress={() => navigation.navigate('Login')}>
+            <Text>Já possui uma conta?</Text>
+            <CreateAccountButtonText>
+              <Text style={{ color: 'red' }}>Sign In</Text>
+            </CreateAccountButtonText>
+          </CreateAccountButton>
+
+
+        </ScrollView>
+
+
+
+      </KeyboardAvoidingView >
 
       {/* <CreateAccountButton onPress={() => navigation.navigate('Login')}>
         <Text>Já possui uma conta?</Text>
