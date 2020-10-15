@@ -1,20 +1,21 @@
 import styled from 'styled-components/native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
-export const SafeAreaViewContainer =  styled.SafeAreaView`
+export const SafeAreaViewContainer = styled.SafeAreaView`
 
 `;
 export const Container = styled.View`
 
-  flex: 1;
+
   align-items: center;
   justify-content: center;
 `;
 
 export const Title = styled.Text`
+  margin-top: 60px;
   font-size: 35px;
   font-weight: bold;
-  margin-bottom: 80px;
+  margin-bottom: 30px;
 `;
 
 
@@ -69,12 +70,11 @@ export const ButtonLoginText = styled.Text`
 `;
 
 export const CreateAccountButton = styled.TouchableOpacity`
-  position: absolute;
+  margin-top: 20px;
+  position: relative;
 
   background-color: #f1f1f1;
-  left: 0;
-  bottom: 0;
-  right: 0;
+
   border-top-width: 1px;
   padding: 10px 0 ${16 + getBottomSpace()}px;
 

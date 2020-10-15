@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
-import { Text } from "react-native";
-=======
-import {Text, View, SafeAreaView } from "react-native";
->>>>>>> 11219e782928a70a1f7c39519c86f29c66e8c526
+import { Text, View, SafeAreaView } from "react-native";
 
 import {
   Container,
@@ -51,28 +47,23 @@ const Login: React.FC = () => {
   const navigation = useNavigation();
 
   function handleSubmit() {
+
     console.log(email + password);
+
   }
 
 
 
-<<<<<<< HEAD
   return (
     <>
-
-=======
-  return(
-<>
-    {/* <SafeAreaView>
+      {/* <SafeAreaView>
     <ScrollView> */}
->>>>>>> 11219e782928a70a1f7c39519c86f29c66e8c526
       <Container>
 
-            <Logo source={logo}></Logo>
+        <Logo source={logo}></Logo>
 
-            {/* <Title>LOGO</Title> */}
+        {/* <Title>LOGO</Title> */}
 
-<<<<<<< HEAD
         <Field>
           <SubTitle>Seja bem vindo!</SubTitle>
           <TitleField>Email</TitleField>
@@ -82,64 +73,40 @@ const Login: React.FC = () => {
             onChangeText={text => setEmail(text)}
           ></InputField>
         </Field>
-=======
-            <Field>
-            <SubTitle>Seja bem vindo!</SubTitle>
-              <TitleField>Email</TitleField>
-              <InputField
-                placeholder="email..."
-                value={email}
-                onChangeText={text => setEmail(text)}
-              ></InputField>
-            </Field>
->>>>>>> 11219e782928a70a1f7c39519c86f29c66e8c526
 
-            <Field>
-              <TitleField>Senha</TitleField>
-              <InputField
-                secureTextEntry={true}
-                placeholder="senha..."
-                value={password}
-                onChangeText={text => setPassword(text)}
-              ></InputField>
-            </Field>
+        <Field>
+          <TitleField>Senha</TitleField>
+          <InputField
+            secureTextEntry={true}
+            placeholder="senha..."
+            value={password}
+            onChangeText={text => setPassword(text)}
+          ></InputField>
+        </Field>
 
 
 
-<<<<<<< HEAD
         <Text
         > Esqueceu a senha? <Text style={{ color: 'red' }}>Recuperar</Text>
         </Text>
-=======
-            <Text
-            > Esqueceu a senha? <Text style={{color: 'red'}}>Recuperar</Text>
-            </Text>
->>>>>>> 11219e782928a70a1f7c39519c86f29c66e8c526
 
 
-            <ButtonLogin
-              onPress={handleSubmit}
-            >
-              <ButtonLoginText>Entrar</ButtonLoginText>
-            </ButtonLogin>
+        <ButtonLogin
+          onPress={handleSubmit}
+        >
+          <ButtonLoginText>Entrar</ButtonLoginText>
+        </ButtonLogin>
 
 
-<<<<<<< HEAD
         <Text
           style={{ color: 'red' }}
           onPress={() => { navigation.navigate('DrawerNavigator') }}
         >Ir para a Stack Navigation</Text>
-        <Text style={{ color: 'blue' }} onPress={() => { navigation.navigate("Iniciar") }}>Ir para iniciar pagina</Text>
-      </Container>
-=======
-          <Text
-            style={{color: 'red'}}
-            onPress={()=>{navigation.navigate('DrawerNavigator')}}
-          >Ir para a Stack Navigation</Text>
->>>>>>> 11219e782928a70a1f7c39519c86f29c66e8c526
+
+        <Text style={{ color: 'blue' }} onPress={() => { navigation.navigate('Inicial') }}>Ir para página iniciar</Text>
 
       </Container>
-    {/* </ScrollView>
+      {/* </ScrollView>
   </SafeAreaView> */}
 
       <CreateAccountButton>

@@ -24,7 +24,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
     <Container>
 
       <BoxIconLeft onPress={() => navigation.openDrawer()}>
-        <Ionicons name="ios-menu" size={35} color={'#000'} />
+        <Ionicons name="ios-menu" size={35} color={'white'} />
 
       </BoxIconLeft>
 
@@ -33,7 +33,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
       </Title>
 
       <BoxIconRight onPress={() => console.log("notify")}>
-        <Ionicons name="ios-notifications-outline" size={35} color={'#000'} />
+        <Ionicons name="ios-notifications-outline" size={35} color={'white'} />
       </BoxIconRight>
     </Container>
   );
