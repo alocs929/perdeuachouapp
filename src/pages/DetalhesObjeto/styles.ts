@@ -12,8 +12,7 @@ export const BodyObjeto = styled.View`
     align-items: center;
 `;
 
-export const Imagem = styled.View`
-    background-color: #ccc;
+export const Imagem = styled.Image`
     width: 100%;
     height: 200px;
 `;
@@ -53,7 +52,7 @@ export const EditButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border-radius: 16px;
-  
+
 `;
 
 export const EditButtonText = styled.Text`
@@ -62,6 +61,6 @@ export const EditButtonText = styled.Text`
   color: #fff;
   font-size: 18px;
   width: 100%;
-  
+
 `;
 

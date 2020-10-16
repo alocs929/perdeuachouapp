@@ -31,8 +31,8 @@ const CadastroObjetos: React.FC = () => {
   const [isContentLoaded, setContentLoaded] = useState(false)
   const [foundedItems, setFoundedItems] = useState([])
 
-  function detalhesObjeto (){
-    navigation.navigate('Detalhes Objeto');
+  function detalhesObjeto(Objeto) {
+    navigation.navigate('DetalhesObjeto', { data: Objeto });
   }
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const CadastroObjetos: React.FC = () => {
           <Image style={{ height: 100, width: 100 }} resizeMode='cover' source={{ uri: data.item.images[0].link }} />
         </View>
         <View>
-          <TouchableOpacity onPress={ () => {detalhesObjeto()} }>
+          <TouchableOpacity onPress={() => { detalhesObjeto(data.item) }}>
             <Text>Detalhes</Text>
           </TouchableOpacity>
         </View>

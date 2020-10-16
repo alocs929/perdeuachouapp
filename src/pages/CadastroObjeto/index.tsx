@@ -31,7 +31,7 @@ const CadastroObjetos: React.FC = () => {
   const [id, setId] = useState(1);
   const [images, setImages] = useState({});
   const [status, setStatus] = useState('AGUARDANDO');
-  const [tipo, setTipo] = useState('ACHADO');
+  const [tipo, setTipo] = useState('PERDIDO');
   const [usuario, setUsuario] = useState(
     {
       "id": 0,
@@ -121,12 +121,12 @@ const CadastroObjetos: React.FC = () => {
     <>
       <PageHeader title="Cadastro de Objetos" />
 
-      <Container 
-      contentContainerStyle={{
+      <Container
+        contentContainerStyle={{
 
-        alignItems: 'center',
-        // justifyContent: 'center'
-      }}
+          alignItems: 'center',
+          // justifyContent: 'center'
+        }}
       >
         <Titulo>
           Cadastrar Pertence

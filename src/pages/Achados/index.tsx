@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'react-native-gesture-handler'
-import {TouchableOpacity} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CadastroObjeto from '../CadastroObjeto'
 import { Ionicons } from '@expo/vector-icons';
@@ -28,19 +28,19 @@ import FAB from "../../components/FloatActionButton";
 import api from '../../services/api';
 
 // import PageHeader from '../../components/PageHeader';
-const CadastroObjetos: React.FC = () => {
+const CadastroObjetos: React.FC = ({ }) => {
   const navigation = useNavigation();
   const [isContentLoaded, setContentLoaded] = useState(false);
   const [foundedItems, setFoundedItems] = useState([])
 
-  async function detalhesObjeto (objeto){
-    await guardarObjeto(objeto);
-    navigation.navigate('Detalhes Objeto');
+  function detalhesObjeto(objeto) {
+
+    navigation.navigate('DetalhesObjeto', { data: objeto });
   }
 
-  async function guardarObjeto (objeto) {
-    await AsyncStorage.setItem('@PerdeuAchou:objeto', objeto);
-  }
+  // async function guardarObjeto(objeto) {
+  //   await AsyncStorage.setItem('@PerdeuAchou:objeto', objeto);
+  // }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,10 +50,10 @@ const CadastroObjetos: React.FC = () => {
           '@PerdeuAchou:id',
           '@PerdeuAchou:token',
         ]);
-        
+
         const id = parseInt(idString[1]);
         console.log(id);
-        
+
         const URI = `pertence/${id}/achado`;
 
         const data = await (await api.get(URI)).data;
@@ -84,7 +84,7 @@ const CadastroObjetos: React.FC = () => {
           <Image style={{ height: 100, width: 100 }} resizeMode='cover' source={{ uri: data.item.images[0].link }} />
         </View>
         <View>
-          <TouchableOpacity onPress={ () => {detalhesObjeto(data.item)} }>
+          <TouchableOpacity onPress={() => { detalhesObjeto(data.item) }}>
             <Text>Detalhes</Text>
           </TouchableOpacity>
         </View>
