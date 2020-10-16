@@ -47,14 +47,6 @@ const DetalhesObjeto: React.FC = ({ route, navigation }) => {
       console.log(idString[1], token[1]);
     }
 
-    // async function getObjeto(){
-    //     const response = await api.get('pertence');
-    //     if (response.status){
-    //         setObjeto(response.data);
-    //         // retornar
-    //     }
-    // }
-
     loadStorageData();
 
   }, []);

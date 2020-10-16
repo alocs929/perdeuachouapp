@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
   Container,
@@ -26,12 +27,66 @@ import {
 
 import api from '../../services/api';
 
-function Match({ navigation }) {
-  const [objeto, setObjeto] = useState({});
+// interface IMatchProps{
+//   route: Object;
+//   navigation: Object;
+  
+// }
+
+const Match: React.FC /* <IMatchProps> */ = ({ route, navigation }) => {
+  const [objeto, setObjeto] = useState({
+    "categoria":"",
+    "descricao":"",
+    "perdidoEm":"",
+    "status":""
+  });
   const [comparados, setComparados] = useState([]);
+  const [objetoAtual, setObjetoAtual] = useState(0);
 
+  function incrementar(){
+    setObjetoAtual(objetoAtual + 1);
+  }
 
+  function decrementar(){
+    setObjetoAtual(objetoAtual - 1);
+  }
 
+  useEffect(() => {
+    async function loadStorageData(): Promise<void> {
+      try {
+        const [idString, token] = await AsyncStorage.multiGet([
+          '@PerdeuAchou:id',
+          '@PerdeuAchou:token',
+        ]);
+        console.log('match load user');
+        console.log(idString[1], token[1]);
+        
+        const URI = `pertence/${idString[1]}/match`;
+        const dataComparados = await (await api.get(URI)).data;
+
+        
+        if (dataComparados){
+          console.log(dataComparados);
+          setComparados(dataComparados);
+        }
+
+      } catch (error) {
+        console.log(error);
+      }
+      
+    }
+    loadStorageData();
+    
+    const { data } = route.params;
+    
+    // setObjeto(data);
+    console.log("==============");
+    console.log(data);
+    // console.log(route);
+    // console.log(comparados);
+
+  }, []);
+  
   return (
     <>
       <Container
@@ -48,7 +103,7 @@ function Match({ navigation }) {
             <ObjetoHead>
               <TitlePrimary>
                 Achado
-                            </TitlePrimary>
+              </TitlePrimary>
             </ObjetoHead>
 
             <Lista>
@@ -59,27 +114,26 @@ function Match({ navigation }) {
               <ListaItem>
                 <Topico>Categoria: </Topico>
                 <Descricao>
-                  Capacete de motocicleta
-                                </Descricao>
+                  {objeto.categoria}
+                </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Descrição: </Topico>
                 <Descricao>
-                  Branco, viseira transparente, adesivo unicornio,
-                  modelo esportivo, marca IBF
-                                </Descricao>
+                  {objeto.descricao}
+                </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Localização: </Topico>
                 <Descricao>
-                  Encontrado no RU da UFC
-                                </Descricao>
+                  {objeto.perdidoEm}
+                </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Status: </Topico>
                 <Descricao>
-                  Match
-                                </Descricao>
+                  {objeto.status}
+                </Descricao>
               </ListaItem>
             </Lista>
 
@@ -91,10 +145,10 @@ function Match({ navigation }) {
             <ObjetoHead>
               <TitlePrimary>
                 Perdido
-                            </TitlePrimary>
+              </TitlePrimary>
               <TitleLabel>
-                (3 Opções encontradas)
-                            </TitleLabel>
+                ( {comparados.length}  Opções encontradas)
+              </TitleLabel>
             </ObjetoHead>
             <Lista>
               <ListaItem>
@@ -104,27 +158,27 @@ function Match({ navigation }) {
               <ListaItem>
                 <Topico>Categoria: </Topico>
                 <Descricao>
-                  Capacete de motocicleta
-                                </Descricao>
+                  {/* {comparados} */}
+                </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Descrição: </Topico>
                 <Descricao>
-                  Branco, viseira transparente, adesivo unicornio,
-                  modelo esportivo, marca IBF
-                                </Descricao>
+                  {/* {comparados[objetoAtual].descricao} */}
+                  { console.log(comparados) }
+                </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Localização: </Topico>
                 <Descricao>
-                  Encontrado no RU da UFC
-                                </Descricao>
+                  {/* {comparados[objetoAtual].perdidoEm} */}
+                </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Status: </Topico>
                 <Descricao>
-                  Match
-                                </Descricao>
+                  {/* {comparados[objetoAtual].status} */}
+                </Descricao>
               </ListaItem>
             </Lista>
             <PerdidoNav>
@@ -146,7 +200,9 @@ function Match({ navigation }) {
           <ButtonText>Confirmar</ButtonText>
         </SuccessButton>
 
-
+        <PrimaryButton>
+          <ButtonText>Contato</ButtonText>
+        </PrimaryButton>
 
         <DangerButton onPress={() => {
           navigation.goBack();
