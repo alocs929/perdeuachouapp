@@ -56,7 +56,7 @@ const Login: React.FC = () => {
         'Authorization': 'Basic cGVyZGV1YWNob3U6TXBhfVkuOEElVEwyWnhtUA=='
       }
     });
-
+    console.log("RESPOSTA");
     console.log(response);
 
     if (response.status == 200) {
@@ -65,7 +65,7 @@ const Login: React.FC = () => {
 
       await AsyncStorage.setItem('@PerdeuAchou:token', token);
       await AsyncStorage.setItem('@PerdeuAchou:id', String(id));
-      navigation.navigate('Inicial');
+      navigation.navigate('DrawerNavigator');
     }
   }
 
@@ -113,8 +113,8 @@ const Login: React.FC = () => {
 
 
         <ButtonLogin
-          // onPress={handleSubmit}
-          onPress={testeLoginHandle}
+          onPress={handleSubmit}
+          
         >
           <ButtonLoginText>Entrar</ButtonLoginText>
         </ButtonLogin>

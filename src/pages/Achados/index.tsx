@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'react-native-gesture-handler'
+import {TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CadastroObjeto from '../CadastroObjeto'
 import { Ionicons } from '@expo/vector-icons';
@@ -32,23 +33,22 @@ const CadastroObjetos: React.FC = () => {
   const [isContentLoaded, setContentLoaded] = useState(false)
   const [foundedItems, setFoundedItems] = useState([])
 
+  function detalhesObjeto (){
+    navigation.navigate('Detalhes Objeto');
+  }
+
   useEffect(() => {
-
-
-
     const fetchData = async () => {
-
-
-
-
 
       try {
         const [idString, token] = await AsyncStorage.multiGet([
           '@PerdeuAchou:id',
           '@PerdeuAchou:token',
         ]);
-
-        const id = parseInt(idString[1])
+        
+        const id = parseInt(idString[1]);
+        console.log(id);
+        
         const URI = `pertence/${id}/achado`;
 
         const data = await (await api.get(URI)).data;
@@ -72,9 +72,12 @@ const CadastroObjetos: React.FC = () => {
 
   const renderItemFunction = (data) => {
     return (<Card style={{ marginBottom: 10 }}>
-      <Card.Content>
+      <Card.Content  >
         <View style={{ display: 'flex', flexDirection: "row", justifyContent: "space-around" }}>
           <Title>{data.item.descricao}</Title>
+          <TouchableOpacity onPress={ () => {detalhesObjeto()} }>
+            <Text>Detalhes</Text>
+          </TouchableOpacity>
           {console.log(data.item.images[0].link)}
           <Image style={{ height: 100, width: 100 }} resizeMode='cover' source={{ uri: data.item.images[0].link }} />
         </View>

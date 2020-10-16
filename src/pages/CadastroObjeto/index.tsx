@@ -110,7 +110,7 @@ const CadastroObjetos: React.FC = () => {
         cleanFields();
       }
     } catch (error) {
-      console.error('Error')
+      // console.error('Erro ao cadastrar')
       console.log(error)
     }
 
@@ -121,7 +121,13 @@ const CadastroObjetos: React.FC = () => {
     <>
       <PageHeader title="Cadastro de Objetos" />
 
-      <Container>
+      <Container 
+      contentContainerStyle={{
+
+        alignItems: 'center',
+        // justifyContent: 'center'
+      }}
+      >
         <Titulo>
           Cadastrar Pertence
             </Titulo>

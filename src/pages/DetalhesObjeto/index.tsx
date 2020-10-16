@@ -24,32 +24,42 @@ const  DetalhesObjeto: React.FC = () =>{
     const [objeto, setObjeto] = useState({
 
     });
+    
+    const [listaObjeto, setListaObjeto] = useState([]);
+
     const [data,setData] = useState({id: Number, token: String});
 
-    // async function getObjeto(){
-    //     const response = await api.get('objeto');
-    //     if (response.status){
-    //         setObjeto(response.data);
-    //         // retornar
-    //     }
-    // }
+    function getObjetos(){
+        
+    }
+
+    async function getObjeto(){
+        const response = await api.get('objeto');
+        if (response.status){
+            setObjeto(response.data);
+            // retornar
+        }
+    }
 
     useEffect(() => {
         async function loadStorageData(): Promise<void> {
           const [idString, token] = await AsyncStorage.multiGet([
             '@PerdeuAchou:id',
-            '@PerdeuAchou:token',
-          ]);
+            '@PerdeuAchou:token', 
+        ]);
           console.log(idString[1], token[1]);
         }
 
         async function getObjeto(){
-            const response = await api.get('objeto');
+            const response = await api.get('pertence');
             if (response.status){
                 setObjeto(response.data);
                 // retornar
             }
         }
+
+        
+        
       }, []);
 
     const navigation = useNavigation();
