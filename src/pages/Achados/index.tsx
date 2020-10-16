@@ -30,11 +30,16 @@ import api from '../../services/api';
 // import PageHeader from '../../components/PageHeader';
 const CadastroObjetos: React.FC = () => {
   const navigation = useNavigation();
-  const [isContentLoaded, setContentLoaded] = useState(false)
+  const [isContentLoaded, setContentLoaded] = useState(false);
   const [foundedItems, setFoundedItems] = useState([])
 
-  function detalhesObjeto (){
+  async function detalhesObjeto (objeto){
+    await guardarObjeto(objeto);
     navigation.navigate('Detalhes Objeto');
+  }
+
+  async function guardarObjeto (objeto) {
+    await AsyncStorage.setItem('@PerdeuAchou:objeto', objeto);
   }
 
   useEffect(() => {
@@ -75,11 +80,13 @@ const CadastroObjetos: React.FC = () => {
       <Card.Content  >
         <View style={{ display: 'flex', flexDirection: "row", justifyContent: "space-around" }}>
           <Title>{data.item.descricao}</Title>
-          <TouchableOpacity onPress={ () => {detalhesObjeto()} }>
-            <Text>Detalhes</Text>
-          </TouchableOpacity>
           {console.log(data.item.images[0].link)}
           <Image style={{ height: 100, width: 100 }} resizeMode='cover' source={{ uri: data.item.images[0].link }} />
+        </View>
+        <View>
+          <TouchableOpacity onPress={ () => {detalhesObjeto(data.item)} }>
+            <Text>Detalhes</Text>
+          </TouchableOpacity>
         </View>
       </Card.Content>
     </Card>)

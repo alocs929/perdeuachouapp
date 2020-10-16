@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View } from "react-native";
 
 import {
@@ -11,12 +11,53 @@ import {
 } from './styles';
 
 import { useNavigation } from '@react-navigation/native';
-
+import api from '../../services/api';
 import profileImg from '../../assets/Logo.jpg';
 import PageHeader from '../../components/PageHeader';
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 const Profile: React.FC = () => {
 
+  const [isContentLoaded, setContentLoaded] = useState(false);
+  const [usuario, setUsuario] = useState({
+    "nome":"string",
+    "email":"string",
+    "cpfCpnj":"string",
+    "telefone":"string"
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+
+      try {
+        const [idString, token] = await AsyncStorage.multiGet([
+          '@PerdeuAchou:id',
+          '@PerdeuAchou:token',
+        ]);
+        
+        const id = parseInt(idString[1]);
+        console.log(id);
+        
+        const URI = `usuario/${id}`;
+
+        const data = await (await api.get(URI)).data;
+        if (data) {
+          setContentLoaded(true)
+          console.log(data)
+          setUsuario(data);
+        }
+
+      }
+      catch (error) {
+        setContentLoaded(true)
+        console.error(error);
+      }
+      // setFoundedItems(data)
+    }
+    fetchData();
+
+  }, [isContentLoaded])
 
   return(
     <View style={{flex: 1}}>
@@ -37,22 +78,22 @@ const Profile: React.FC = () => {
 
           <Field>
             <TitleField>Nome: </TitleField>
-            <ContentField>Bruno</ContentField>
+            <ContentField> {usuario.nome} </ContentField>
           </Field>
 
           <Field>
             <TitleField>Email: </TitleField>
-            <ContentField>bruno@gmail.com</ContentField>
+            <ContentField> {usuario.email} </ContentField>
           </Field>
 
           <Field>
             <TitleField>CPF/CNPJ: </TitleField>
-            <ContentField>123.123.123-12</ContentField>
+            <ContentField> {usuario.cpfCpnj} </ContentField>
           </Field>
 
           <Field>
             <TitleField>Telefone: </TitleField>
-            <ContentField>(85) 9 12341234</ContentField>
+            <ContentField> {usuario.telefone} </ContentField>
           </Field>
 
         </FieldBox>

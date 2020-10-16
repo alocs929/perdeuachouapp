@@ -25,20 +25,15 @@ const  DetalhesObjeto: React.FC = () =>{
 
     });
     
-    const [listaObjeto, setListaObjeto] = useState([]);
+    
 
     const [data,setData] = useState({id: Number, token: String});
 
-    function getObjetos(){
-        
-    }
+    
 
     async function getObjeto(){
-        const response = await api.get('objeto');
-        if (response.status){
-            setObjeto(response.data);
-            // retornar
-        }
+        const data = await AsyncStorage.getItem('@PerdeuAchou:objeto');
+        console.log(data);
     }
 
     useEffect(() => {
@@ -50,15 +45,16 @@ const  DetalhesObjeto: React.FC = () =>{
           console.log(idString[1], token[1]);
         }
 
-        async function getObjeto(){
-            const response = await api.get('pertence');
-            if (response.status){
-                setObjeto(response.data);
-                // retornar
-            }
-        }
+        // async function getObjeto(){
+        //     const response = await api.get('pertence');
+        //     if (response.status){
+        //         setObjeto(response.data);
+        //         // retornar
+        //     }
+        // }
 
-        
+        loadStorageData();
+        getObjeto();
         
       }, []);
 

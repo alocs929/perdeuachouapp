@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import CadastroObjeto from '../CadastroObjeto'
 import { Ionicons } from '@expo/vector-icons';
-import { ActivityIndicator, FlatList, View, Image } from "react-native"
+import { ActivityIndicator, FlatList, View, Image, TouchableOpacity } from "react-native"
 import { Card, Title, Paragraph } from 'react-native-paper';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -30,6 +30,10 @@ const CadastroObjetos: React.FC = () => {
   const navigation = useNavigation();
   const [isContentLoaded, setContentLoaded] = useState(false)
   const [foundedItems, setFoundedItems] = useState([])
+
+  function detalhesObjeto (){
+    navigation.navigate('Detalhes Objeto');
+  }
 
   useEffect(() => {
     const URI = "";
@@ -71,6 +75,11 @@ const CadastroObjetos: React.FC = () => {
           <Title>{data.item.descricao}</Title>
           {console.log(data.item.images[0].link)}
           <Image style={{ height: 100, width: 100 }} resizeMode='cover' source={{ uri: data.item.images[0].link }} />
+        </View>
+        <View>
+          <TouchableOpacity onPress={ () => {detalhesObjeto()} }>
+            <Text>Detalhes</Text>
+          </TouchableOpacity>
         </View>
       </Card.Content>
     </Card>)
