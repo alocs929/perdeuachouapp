@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
 import AsyncStorage from '@react-native-community/async-storage';
+// import ContatoModal from '../../components/modal';
 
 import {
   Container,
@@ -30,6 +31,31 @@ import api from '../../services/api';
 
 const  Match: React.FC = ({ route, navigation }) => {
 
+  const modal = (
+    <Modal
+            visible={modalVisible}
+        >
+            <View style={styles.container}>
+                <Text>Nome: </Text>
+                <Text>{comparado[idComparadoAtual].usuario.nome}</Text>
+                <Text>Email: </Text>
+                <Text>{comparado[idComparadoAtual].usuario.email}</Text>
+                <Text>Telefone: </Text>
+                <Text>{comparado[idComparadoAtual].usuario.telefone}</Text>
+            </View>
+            <View style={styles.modalFooter}>
+                <TouchableOpacity style={styles.actions}
+                onPress={() => {
+                    setModalVisible(!modalVisible);
+                  }}
+                >
+                    <Text style={styles.actionText}>Cancelar</Text>
+                </TouchableOpacity>
+            </View>
+        </Modal>
+  );
+
+
   const [objeto, setObjeto] = useState({
     "categoria":"",
     "descricao":"",
@@ -50,6 +76,7 @@ const  Match: React.FC = ({ route, navigation }) => {
     }
   ]);
   const [idObjetoAtual, setIdObjetoAtual] = useState(0);
+  
 
   function avancar () {
     console.log("avancar");
@@ -79,7 +106,8 @@ const  Match: React.FC = ({ route, navigation }) => {
   }
 
   function detalhes(){
-    navigation.navigate('DetalhesObjeto', { data: comparados[idObjetoAtual] });
+    // navigation.navigate('DetalhesObjeto', { data: comparados[idObjetoAtual] });
+    
   }
 
   function recusar () {
@@ -119,6 +147,9 @@ const  Match: React.FC = ({ route, navigation }) => {
   const { data } = route.params;
   return (
     <>
+      
+      
+
       <Container
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={{
@@ -256,5 +287,59 @@ const  Match: React.FC = ({ route, navigation }) => {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modal:{
+    backgroundColor:"#00000099",
+    flex:1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalContainer:{
+    backgroundColor:"#f9fafb",
+    width:"80%",
+    borderRadius:5
+  },
+  modalHeader:{
+    
+  },
+  title:{
+    fontWeight:"bold",
+    fontSize:20,
+    padding:15,
+    color:"#000"
+  },
+  divider:{
+    width:"100%",
+    height:1,
+    backgroundColor:"lightgray"
+  },
+  modalBody:{
+    backgroundColor:"#fff",
+    paddingVertical:20,
+    paddingHorizontal:10
+  },
+  modalFooter:{
+  },
+  actions:{
+    borderRadius:5,
+    marginHorizontal:10,
+    paddingVertical:10,
+    paddingHorizontal:20
+  },
+  actionText:{
+    color:"#fff"
+  }
+});
+
+
+
+
 
 export default Match;
