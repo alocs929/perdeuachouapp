@@ -116,6 +116,7 @@ export const PerdidoNav = styled.View`
     flex-direction: row;
     justify-content: space-around;
     /* background-color: red; */
+    
 `;
 
 export const PerdidoNavBtn = styled.TouchableOpacity`
@@ -128,7 +129,7 @@ export const PerdidoNavBtn = styled.TouchableOpacity`
 `;
 
 export const Footer = styled.View`
-    /* background-color: pink; */
+    
     padding: 5px;
     border-top-width: 1px;
     border-top-color: #ff6b6b;

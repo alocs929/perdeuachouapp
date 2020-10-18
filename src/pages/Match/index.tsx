@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
-import AsyncStorage from '@react-native-community/async-storage';
 
 import {
   Container,
@@ -27,73 +26,19 @@ import {
 
 import api from '../../services/api';
 
-// interface IMatchProps{
-//   route: Object;
-//   navigation: Object;
-  
-// }
-
-const Match: React.FC /* <IMatchProps> */ = ({ route, navigation }) => {
-  const [objeto, setObjeto] = useState({
-    "categoria":"",
-    "descricao":"",
-    "perdidoEm":"",
-    "status":""
-  });
+function Match({ navigation }) {
+  const [objeto, setObjeto] = useState({});
   const [comparados, setComparados] = useState([]);
-  const [objetoAtual, setObjetoAtual] = useState(0);
 
-  function incrementar(){
-    setObjetoAtual(objetoAtual + 1);
-  }
 
-  function decrementar(){
-    setObjetoAtual(objetoAtual - 1);
-  }
 
-  useEffect(() => {
-    async function loadStorageData(): Promise<void> {
-      try {
-        const [idString, token] = await AsyncStorage.multiGet([
-          '@PerdeuAchou:id',
-          '@PerdeuAchou:token',
-        ]);
-        console.log('match load user');
-        console.log(idString[1], token[1]);
-        
-        const URI = `pertence/${idString[1]}/match`;
-        const dataComparados = await (await api.get(URI)).data;
-
-        
-        if (dataComparados){
-          console.log(dataComparados);
-          setComparados(dataComparados);
-        }
-
-      } catch (error) {
-        console.log(error);
-      }
-      
-    }
-    loadStorageData();
-    
-    const { data } = route.params;
-    
-    // setObjeto(data);
-    console.log("==============");
-    console.log(data);
-    // console.log(route);
-    // console.log(comparados);
-
-  }, []);
-  
   return (
     <>
       <Container
         contentContainerStyle={{
-          paddingHorizontal: 16,
+          paddingHorizontal: 8,
           paddingBottom: 16,
-          marginTop: 10,
+          // marginTop: 10,
           alignItems: 'center'
         }}
       >
@@ -114,25 +59,25 @@ const Match: React.FC /* <IMatchProps> */ = ({ route, navigation }) => {
               <ListaItem>
                 <Topico>Categoria: </Topico>
                 <Descricao>
-                  {objeto.categoria}
+                  Categoria mockada
                 </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Descrição: </Topico>
                 <Descricao>
-                  {objeto.descricao}
+                  Descricao mockada
                 </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Localização: </Topico>
                 <Descricao>
-                  {objeto.perdidoEm}
+                  localização mockada
                 </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Status: </Topico>
                 <Descricao>
-                  {objeto.status}
+                  status mockado
                 </Descricao>
               </ListaItem>
             </Lista>
@@ -147,7 +92,7 @@ const Match: React.FC /* <IMatchProps> */ = ({ route, navigation }) => {
                 Perdido
               </TitlePrimary>
               <TitleLabel>
-                ( {comparados.length}  Opções encontradas)
+                (3 Opções encontradas)
               </TitleLabel>
             </ObjetoHead>
             <Lista>
@@ -158,26 +103,25 @@ const Match: React.FC /* <IMatchProps> */ = ({ route, navigation }) => {
               <ListaItem>
                 <Topico>Categoria: </Topico>
                 <Descricao>
-                  {/* {comparados} */}
+                  Categoria mockada
                 </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Descrição: </Topico>
                 <Descricao>
-                  {/* {comparados[objetoAtual].descricao} */}
-                  { console.log(comparados) }
+                  Descricao mockada
                 </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Localização: </Topico>
                 <Descricao>
-                  {/* {comparados[objetoAtual].perdidoEm} */}
+                  localização mockda
                 </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Status: </Topico>
                 <Descricao>
-                  {/* {comparados[objetoAtual].status} */}
+                  status mockado
                 </Descricao>
               </ListaItem>
             </Lista>
@@ -201,7 +145,7 @@ const Match: React.FC /* <IMatchProps> */ = ({ route, navigation }) => {
         </SuccessButton>
 
         <PrimaryButton>
-          <ButtonText>Contato</ButtonText>
+          <ButtonText>Mensagem</ButtonText>
         </PrimaryButton>
 
         <DangerButton onPress={() => {

@@ -84,7 +84,9 @@ const CadastroObjetos: React.FC = ({ }) => {
           <Image style={{ height: 100, width: 100 }} resizeMode='cover' source={{ uri: data.item.images[0].link }} />
         </View>
         <View>
-          <TouchableOpacity onPress={() => { detalhesObjeto(data.item) }}>
+          <TouchableOpacity onPress={() => { 
+              detalhesObjeto(data.item) 
+            }}>
             <Text>Detalhes</Text>
           </TouchableOpacity>
         </View>
