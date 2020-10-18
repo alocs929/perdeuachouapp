@@ -21,22 +21,6 @@ import api from '../../services/api';
 
 const DetalhesObjeto: React.FC = ({ route, navigation }) => {
 
-  // const [objeto, setObjeto] = useState({
-
-  // });
-
-
-
-
-  // const [data, setData] = useState({ id: Number, token: String });
-
-
-
-  // async function getObjeto() {
-  //   const data = await AsyncStorage.getItem('@PerdeuAchou:objeto');
-  //   console.log(data);
-  // }
-
   useEffect(() => {
     async function loadStorageData(): Promise<void> {
       const [idString, token] = await AsyncStorage.multiGet([
@@ -96,9 +80,10 @@ const DetalhesObjeto: React.FC = ({ route, navigation }) => {
         <EditButton onPress={() => {
           navigation.navigate("Match", { data: data })
         }}>
-          <EditButtonText>
+          <EditButtonText
+          >
             Match
-                    </EditButtonText>
+          </EditButtonText>
         </EditButton>
       </Footer>
     </Container>

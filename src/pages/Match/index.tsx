@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
   Container,
@@ -26,12 +27,80 @@ import {
 
 import api from '../../services/api';
 
-function Match({ navigation }) {
-  const [objeto, setObjeto] = useState({});
-  const [comparados, setComparados] = useState([]);
+const  Match: React.FC = ({ route, navigation }) => {
+
+  const [objeto, setObjeto] = useState({
+    "categoria":"",
+    "descricao":"",
+    "local":"",
+    "status":"",
+    "dataCadastro":""
+  });
+  const [comparados, setComparados] = useState([
+    {
+      "categoria":"",
+      "descricao":"",
+      "local":"",
+      "status":"",
+      "dataCadastro":"",
+      "perdidoEm":""
+    }
+  ]);
+  const [idObjetoAtual, setIdObjetoAtual] = useState(0);
+
+  function avancar (){
+    console.log("avancar");
+    let maximo = comparados.length;
+    let aux = idObjetoAtual;
+    aux = (aux  + 1) % maximo;
+    
+    setIdObjetoAtual(aux);
+    
+  }
+
+  function voltar (){
+    console.log("voltar");
+    let maximo = comparados.length;
+    let aux = idObjetoAtual;
+    aux = (aux - 1);
+    if (aux < 0){
+      aux = maximo - 1;
+    }
+    setIdObjetoAtual(aux);
+  }
 
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [idString, token] = await AsyncStorage.multiGet([
+          '@PerdeuAchou:id',
+          '@PerdeuAchou:token',
+        ]);
 
+        const id = parseInt(idString[1]);
+        console.log(id);
+
+        const URI = `pertence/${id}/match`;
+
+        const data = await (await api.get(URI)).data;
+        if (data) {
+          console.log("Resposta da requisição ao match");
+          console.log(data);
+          setComparados(data);
+        }
+
+      }
+      catch (error) {
+        // setContentLoaded(true)
+      }
+      // setFoundedItems(data)
+    }
+    fetchData();
+    
+  }, []);
+
+  const { data } = route.params;
   return (
     <>
       <Container
@@ -39,7 +108,8 @@ function Match({ navigation }) {
           paddingHorizontal: 8,
           paddingBottom: 16,
           // marginTop: 10,
-          alignItems: 'center'
+          alignItems: 'center',
+          
         }}
       >
         <PageHeader title="Match" />
@@ -54,30 +124,30 @@ function Match({ navigation }) {
             <Lista>
               <ListaItem>
                 <Topico>Data: </Topico>
-                <Descricao>30/07/2020</Descricao>
+                <Descricao> {data.dataCadastro} </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Categoria: </Topico>
                 <Descricao>
-                  Categoria mockada
+                  {data.categoria}
                 </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Descrição: </Topico>
                 <Descricao>
-                  Descricao mockada
+                  {data.descricao}
                 </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Localização: </Topico>
                 <Descricao>
-                  localização mockada
+                  {data.perdidoEm}
                 </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Status: </Topico>
                 <Descricao>
-                  status mockado
+                  {data.status}
                 </Descricao>
               </ListaItem>
             </Lista>
@@ -92,45 +162,49 @@ function Match({ navigation }) {
                 Perdido
               </TitlePrimary>
               <TitleLabel>
-                (3 Opções encontradas)
+                ( {comparados.length} Opções encontradas)
               </TitleLabel>
             </ObjetoHead>
             <Lista>
               <ListaItem>
                 <Topico>Data: </Topico>
-                <Descricao>30/07/2020</Descricao>
+                <Descricao>{comparados[idObjetoAtual].dataCadastro}</Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Categoria: </Topico>
                 <Descricao>
-                  Categoria mockada
+                  {comparados[idObjetoAtual].categoria}
                 </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Descrição: </Topico>
                 <Descricao>
-                  Descricao mockada
+                {comparados[idObjetoAtual].descricao}
                 </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Localização: </Topico>
                 <Descricao>
-                  localização mockda
+                {comparados[idObjetoAtual].perdidoEm}
                 </Descricao>
               </ListaItem>
               <ListaItem>
                 <Topico>Status: </Topico>
                 <Descricao>
-                  status mockado
+                {comparados[idObjetoAtual].status}
                 </Descricao>
               </ListaItem>
             </Lista>
             <PerdidoNav>
-              <PerdidoNavBtn>
+              <PerdidoNavBtn
+                onPress={() => {voltar()}}
+              >
                 <ButtonText> prev </ButtonText>
               </PerdidoNavBtn>
 
-              <PerdidoNavBtn>
+              <PerdidoNavBtn
+                onPress={() => {avancar()}}
+              >
                 <ButtonText> prox </ButtonText>
               </PerdidoNavBtn>
             </PerdidoNav>
