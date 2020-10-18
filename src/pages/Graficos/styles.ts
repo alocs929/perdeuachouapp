@@ -1,10 +1,10 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  flex: 1;
-  align-items: center;
-  /* justify-content: center; */
-  padding-top: 7%;
+export const Container = styled.ScrollView`
+  /* flex: 1;
+  align-items: center; */
+  
+  /* padding-top: 7%; */
 
 `;
 
@@ -18,18 +18,29 @@ export const Titulo = styled.Text`
 `;
 
 export const Label = styled.Text`
-    color: #121212;
-    font-size: 14px;
-    width: 90%;
+  color: #121212;
+  font-size: 14px;
+  width: 90%;
 `;
 
 export const BtnMenu = styled.TouchableOpacity`
-    width: 30%;
-    background-color: #ff6b6b;
-    border-radius: 10px;
-    margin-right: 20px
-    padding:10px
+  width: 30%;
+  background-color: #ff6b6b;
+  border-radius: 10px;
+  margin-right: 20px;
+  padding: 10px;
 `
+
+export const Relatorio = styled.View`
+  width: 80%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+`;
+
+export const RelatorioLine = styled.Text`
+  width: 100%;
+  margin-bottom: 5px;
+`;
 
 export const BtnContainer = styled.View`
   display:flex;

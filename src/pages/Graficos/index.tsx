@@ -20,7 +20,9 @@ import {
   BtnContainer,
   BtnMenu,
   BtnMenuText,
-  ListContainer
+  ListContainer,
+  Relatorio,
+  RelatorioLine
 } from './styles';
 import { Text, TextInput } from "react-native";
 
@@ -38,8 +40,11 @@ import {
 const Graficos: React.FC = ({ }) => {
   const navigation = useNavigation();
   const [isContentLoaded, setContentLoaded] = useState(false);
-  const [entregaSemanal, setEntregaSemanal] = useState([])
-  const [cadastroSemanal, setCadastroSemanal] = useState([])
+  const [entregaSemanal, setEntregaSemanal] = useState([0,0,0,0,0,0,0]);
+  const [cadastroSemanal, setCadastroSemanal] = useState([0,0,0,0,0,0,0]);
+  const [qtdUsuarios, setQtdUsuarios] = useState(0);
+  const [qtdPertencesCadastrados, setQtdPertencesCadastrados] = useState(0);
+  const [qtdPertencesRecuperados, setQtdPertencesRecuperados] = useState(0);
 
   // async function guardarObjeto(objeto) {
   //   await AsyncStorage.setItem('@PerdeuAchou:objeto', objeto);
@@ -49,24 +54,36 @@ const Graficos: React.FC = ({ }) => {
     const fetchData = async () => {
 
       try {
-
-        const URIEntregas = `bi/entregas/pertences`;
-        const URICadastro = "bi/cadastro/pertences";
+        console.log("Chamando fetch data");
+        
+        const URIEntregas = `bi/semana/entregas/pertences/semana`;
+        const URICadastro = "bi/semana/cadastro/pertences/semana";
+        const URIQtdUsuarios = 'bi/semana/cadastro/usuarios';
+        const URIQtdPertencesCadastrados = 'bi/semana/cadastro/pertences';
+        const URIQtdPertencesRecuperados = 'bi/semana/entregas/pertences';
 
         const dataEntreguesSemanal = await (await api.get(URIEntregas)).data;
         const dataCadastrosSemanal = await (await api.get(URICadastro)).data;
-
+        const dataQtdUsuarios = await (await api.get(URIQtdUsuarios)).data;
+        const dataQtdPertencesCadastrados = await (await api.get(URIQtdPertencesCadastrados)).data;
+        const dataQtdPertencesRecuperados = await (await api.get(URIQtdPertencesRecuperados)).data;
+        
         if (dataEntreguesSemanal && dataCadastrosSemanal) {
-          setContentLoaded(true)
-
-          setEntregaSemanal(dataEntreguesSemanal)
-          setCadastroSemanal(dataCadastrosSemanal)
+          setContentLoaded(true);
+          
+          setEntregaSemanal(dataEntreguesSemanal);
+          setCadastroSemanal(dataCadastrosSemanal);
+          setQtdUsuarios(dataQtdUsuarios);
+          setQtdPertencesCadastrados(dataQtdPertencesCadastrados);
+          setQtdPertencesRecuperados(dataQtdPertencesRecuperados);
+          
+          
         }
 
       }
       catch (error) {
-        setContentLoaded(true)
-
+        setContentLoaded(true);
+        console.log(error);
       }
       // setFoundedItems(data)
     }
@@ -85,7 +102,15 @@ const Graficos: React.FC = ({ }) => {
 
       return (
         <ListContainer>
-          <Text style={{ fontSize: 20, marginTop: 10, fontWeight: 'bold' }}>Entregas Semanal</Text>
+          <Text style={{ 
+            fontSize: 20, 
+            marginTop: 10, 
+            fontWeight: 'bold', 
+            width: '100%',  
+            textAlign: 'center'
+            }}>
+              Entregas Semanais
+          </Text>
           <LineChart
             data={{
               labels: ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
@@ -120,7 +145,15 @@ const Graficos: React.FC = ({ }) => {
             }}
           />
 
-          <Text style={{ fontSize: 20, marginTop: 10, fontWeight: 'bold' }}>Cadastro Semanal</Text>
+          <Text style={{ 
+            fontSize: 20, 
+            marginTop: 10, 
+            fontWeight: 'bold',
+            width: '100%',
+            textAlign: 'center'
+            }}>
+              Cadastro Semanal
+          </Text>
           <LineChart
             data={{
               labels: ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
@@ -163,27 +196,33 @@ const Graficos: React.FC = ({ }) => {
 
   return (
     <>
-      {/* <PageHeader title="Pagina Inicial" /> */}
-      <Container>
-        <PageHeader title="Graficos" />
+      <Container
+      keyboardShouldPersistTaps="handled"
+      contentContainerStyle={{
 
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+      >
+        <PageHeader title="Comunidade" />
+
+        <Relatorio>
+          <RelatorioLine>
+            A nossa comunidade já possui {qtdUsuarios} usuários.
+          </RelatorioLine>
+          <RelatorioLine>
+            São {qtdPertencesCadastrados} pertences cadastrados.
+          </RelatorioLine>
+          <RelatorioLine>
+          Parabéns, graças a vocês já são {qtdPertencesRecuperados}  
+          pertences recuperados!
+          </RelatorioLine>
+        </Relatorio>
 
         {
           runContent()
         }
 
-
-        {/* <Label>Data</Label>
-            <CampoTexto placeholder="Data em que o pertence foi encontrado" /> */}
-
-
-
-        {/* <ButtonAddItem>
-          <ButtonSaveText>
-            Adicionar Item
-          </ButtonSaveText>
-          <Ionicons style={{ marginRight: 2, marginLeft: -30 }} name="md-add-circle" size={30} color="white" />
-        </ButtonAddItem> */}
       </Container>
 
     </>
