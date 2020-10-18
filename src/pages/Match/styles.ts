@@ -17,6 +17,11 @@ export const Body = styled.View`
     justify-content: space-around;
 `;
 
+export const Imagem = styled.Image`
+    width: 100%;
+    height: 200px;
+`;
+
 export const SideContainer = styled.View`
     width: 48%;
     /* flex: 1; */
@@ -83,7 +88,8 @@ export const SuccessButton = styled.TouchableOpacity`
 
 export const DangerButton = styled.TouchableOpacity`
   background-color: #de2100;
-  width: 30%;
+  margin-top: 5px;
+  width: 100%;
   /* height: 70%; */
   padding: 8px;
   justify-content: center;
@@ -136,7 +142,7 @@ export const Footer = styled.View`
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    height: 12%;
+    height: 8%;
     flex-direction: row;
     /* position: absolute; */
     bottom: 0;

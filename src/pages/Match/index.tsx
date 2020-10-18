@@ -22,7 +22,8 @@ import {
   Descricao,
   LineVertical,
   PerdidoNav,
-  PerdidoNavBtn
+  PerdidoNavBtn,
+  Imagem
 } from './styles';
 
 import api from '../../services/api';
@@ -34,7 +35,8 @@ const  Match: React.FC = ({ route, navigation }) => {
     "descricao":"",
     "local":"",
     "status":"",
-    "dataCadastro":""
+    "dataCadastro":"",
+    "images":[ { "link":"" } ]
   });
   const [comparados, setComparados] = useState([
     {
@@ -43,22 +45,21 @@ const  Match: React.FC = ({ route, navigation }) => {
       "local":"",
       "status":"",
       "dataCadastro":"",
-      "perdidoEm":""
+      "perdidoEm":"",
+      "images": [ { "link":"" } ]
     }
   ]);
   const [idObjetoAtual, setIdObjetoAtual] = useState(0);
 
-  function avancar (){
+  function avancar () {
     console.log("avancar");
     let maximo = comparados.length;
     let aux = idObjetoAtual;
     aux = (aux  + 1) % maximo;
-    
     setIdObjetoAtual(aux);
-    
   }
 
-  function voltar (){
+  function voltar () {
     console.log("voltar");
     let maximo = comparados.length;
     let aux = idObjetoAtual;
@@ -69,6 +70,21 @@ const  Match: React.FC = ({ route, navigation }) => {
     setIdObjetoAtual(aux);
   }
 
+  async function  confirmar (idAchado, idPerdido) {
+    console.log(idAchado + " " + idPerdido );
+    const URIConfirmar = `pertence/entrega/${idAchado}/${idPerdido}`;
+    const response = await api.patch(URIConfirmar);
+    console.log(response.status);
+    // 
+  }
+
+  function detalhes(){
+    navigation.navigate('DetalhesObjeto', { data: comparados[idObjetoAtual] });
+  }
+
+  function recusar () {
+
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -104,10 +120,9 @@ const  Match: React.FC = ({ route, navigation }) => {
   return (
     <>
       <Container
+        keyboardShouldPersistTaps="handled"
         contentContainerStyle={{
           paddingHorizontal: 8,
-          paddingBottom: 16,
-          // marginTop: 10,
           alignItems: 'center',
           
         }}
@@ -120,6 +135,10 @@ const  Match: React.FC = ({ route, navigation }) => {
                 Achado
               </TitlePrimary>
             </ObjetoHead>
+
+            <Imagem source={{
+              uri: data.images[0].link
+            }}></Imagem>
 
             <Lista>
               <ListaItem>
@@ -165,6 +184,9 @@ const  Match: React.FC = ({ route, navigation }) => {
                 ( {comparados.length} Opções encontradas)
               </TitleLabel>
             </ObjetoHead>
+            <Imagem source={{
+              uri: comparados[idObjetoAtual].images[0].link
+            }}></Imagem>
             <Lista>
               <ListaItem>
                 <Topico>Data: </Topico>
@@ -208,13 +230,20 @@ const  Match: React.FC = ({ route, navigation }) => {
                 <ButtonText> prox </ButtonText>
               </PerdidoNavBtn>
             </PerdidoNav>
+            <DangerButton onPress={() => {
+              detalhes();
+            }}> 
+            <ButtonText>Mais detalhes</ButtonText>
+          </DangerButton>
           </SideContainer>
         </Body>
 
       </Container>
 
       <Footer>
-        <SuccessButton>
+        <SuccessButton
+          onPress={() => { confirmar(data.id, comparados[idObjetoAtual].id ); }}
+        >
           <ButtonText>Confirmar</ButtonText>
         </SuccessButton>
 
@@ -222,11 +251,7 @@ const  Match: React.FC = ({ route, navigation }) => {
           <ButtonText>Mensagem</ButtonText>
         </PrimaryButton>
 
-        <DangerButton onPress={() => {
-          navigation.goBack();
-        }}>
-          <ButtonText>Recusar</ButtonText>
-        </DangerButton>
+        
       </Footer>
     </>
   );
