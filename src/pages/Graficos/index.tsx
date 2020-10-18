@@ -8,6 +8,8 @@ import { Card, Title, Paragraph } from 'react-native-paper';
 import AsyncStorage from '@react-native-community/async-storage';
 import PageHeader from '../../components/PageHeader';
 
+// import { Page, Document, StyleSheet } from '@react-pdf/renderer';
+
 import {
   Container,
   Titulo,
@@ -22,7 +24,9 @@ import {
   BtnMenuText,
   ListContainer,
   Relatorio,
-  RelatorioLine
+  RelatorioLine,
+  ReportBtn,
+  ReportBtnText
 } from './styles';
 import { Text, TextInput } from "react-native";
 
@@ -46,9 +50,9 @@ const Graficos: React.FC = ({ }) => {
   const [qtdPertencesCadastrados, setQtdPertencesCadastrados] = useState(0);
   const [qtdPertencesRecuperados, setQtdPertencesRecuperados] = useState(0);
 
-  // async function guardarObjeto(objeto) {
-  //   await AsyncStorage.setItem('@PerdeuAchou:objeto', objeto);
-  // }
+  function gerarPdf(){
+    console.log('gerar pdf');
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -196,35 +200,46 @@ const Graficos: React.FC = ({ }) => {
 
   return (
     <>
-      <Container
-      keyboardShouldPersistTaps="handled"
-      contentContainerStyle={{
+      {/* <Document>
+        <Page size="A4"> */}
+          <Container
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={{
 
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
-      >
-        <PageHeader title="Comunidade" />
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+          >
+            <PageHeader title="Comunidade" />
 
-        <Relatorio>
-          <RelatorioLine>
-            A nossa comunidade já possui {qtdUsuarios} usuários.
-          </RelatorioLine>
-          <RelatorioLine>
-            São {qtdPertencesCadastrados} pertences cadastrados.
-          </RelatorioLine>
-          <RelatorioLine>
-          Parabéns, graças a vocês já são {qtdPertencesRecuperados}  
-          pertences recuperados!
-          </RelatorioLine>
-        </Relatorio>
+            <Relatorio>
+              <RelatorioLine>
+                A nossa comunidade já possui {qtdUsuarios} usuários.
+              </RelatorioLine>
+              <RelatorioLine>
+                São {qtdPertencesCadastrados} pertences cadastrados.
+              </RelatorioLine>
+              <RelatorioLine>
+              Parabéns, graças a vocês já são {qtdPertencesRecuperados}  
+              pertences recuperados!
+              </RelatorioLine>
+            </Relatorio>
 
-        {
-          runContent()
-        }
+            {
+              runContent()
+            }
 
-      </Container>
+            <ReportBtn
+              onPress={() => { gerarPdf(); }}
+            >
+              <ReportBtnText>
+                Gerar pdf
+              </ReportBtnText>
+            </ReportBtn>
 
+          </Container>
+        {/* </Page>
+      </Document> */}
     </>
   );
 }

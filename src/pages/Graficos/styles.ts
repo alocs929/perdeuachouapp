@@ -89,9 +89,9 @@ export const BtnMenuText = styled.Text`
   color:  #fff;
   font-size: 20px;
   font-weight:bold;
-  text-align:center
+  text-align:center;
 
-`
+`;
 export const ButtonSaveText = styled.Text`
     width: 100%;
     color:  #fff;
@@ -104,5 +104,18 @@ export const ListContainer = styled.View`
   justify-content:center;
   align-items:center;
   width: 80%;
+`;
 
-`
+export const ReportBtn = styled.TouchableOpacity`
+  width: 80%;
+  padding: 8px;
+  background-color: #ffa726;
+  margin-top: 20px;
+  margin-bottom: 40px;
+`;
+
+export const ReportBtnText = styled.Text`
+  color: #fff;
+  width: 100%;
+  text-align: center;
+`;
