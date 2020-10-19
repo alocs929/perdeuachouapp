@@ -59,7 +59,7 @@ const Graficos: React.FC = ({ }) => {
 
       try {
         console.log("Chamando fetch data");
-        
+
         const URIEntregas = `bi/semana/entregas/pertences/semana`;
         const URICadastro = "bi/semana/cadastro/pertences/semana";
         const URIQtdUsuarios = 'bi/semana/cadastro/usuarios';
@@ -71,17 +71,17 @@ const Graficos: React.FC = ({ }) => {
         const dataQtdUsuarios = await (await api.get(URIQtdUsuarios)).data;
         const dataQtdPertencesCadastrados = await (await api.get(URIQtdPertencesCadastrados)).data;
         const dataQtdPertencesRecuperados = await (await api.get(URIQtdPertencesRecuperados)).data;
-        
+
         if (dataEntreguesSemanal && dataCadastrosSemanal) {
           setContentLoaded(true);
-          
+
           setEntregaSemanal(dataEntreguesSemanal);
           setCadastroSemanal(dataCadastrosSemanal);
           setQtdUsuarios(dataQtdUsuarios);
           setQtdPertencesCadastrados(dataQtdPertencesCadastrados);
           setQtdPertencesRecuperados(dataQtdPertencesRecuperados);
-          
-          
+
+
         }
 
       }
@@ -106,11 +106,11 @@ const Graficos: React.FC = ({ }) => {
 
       return (
         <ListContainer>
-          <Text style={{ 
-            fontSize: 20, 
-            marginTop: 10, 
-            fontWeight: 'bold', 
-            width: '100%',  
+          <Text style={{
+            fontSize: 20,
+            marginTop: 10,
+            fontWeight: 'bold',
+            width: '100%',
             textAlign: 'center'
             }}>
               Entregas Semanais
@@ -149,9 +149,9 @@ const Graficos: React.FC = ({ }) => {
             }}
           />
 
-          <Text style={{ 
-            fontSize: 20, 
-            marginTop: 10, 
+          <Text style={{
+            fontSize: 20,
+            marginTop: 10,
             fontWeight: 'bold',
             width: '100%',
             textAlign: 'center'
@@ -214,13 +214,13 @@ const Graficos: React.FC = ({ }) => {
 
             <Relatorio>
               <RelatorioLine>
-                A nossa comunidade já possui {qtdUsuarios} usuários.
+                A nossa comunidade já possui <Text style={{fontWeight: "bold"}}>{qtdUsuarios}</Text> usuários.
               </RelatorioLine>
               <RelatorioLine>
-                São {qtdPertencesCadastrados} pertences cadastrados.
+                São <Text style={{fontWeight: "bold"}}>{qtdPertencesCadastrados}</Text>  pertences cadastrados.
               </RelatorioLine>
               <RelatorioLine>
-              Parabéns, graças a vocês já são {qtdPertencesRecuperados}  
+              Parabéns, graças a vocês já são<Text style={{fontWeight: "bold"}}> {qtdPertencesRecuperados} </Text>
               pertences recuperados!
               </RelatorioLine>
             </Relatorio>

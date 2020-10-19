@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.ScrollView`
   /* flex: 1;
   align-items: center; */
-  
+
   /* padding-top: 7%; */
 
 `;
@@ -32,13 +32,14 @@ export const BtnMenu = styled.TouchableOpacity`
 `
 
 export const Relatorio = styled.View`
-  width: 80%;
+  width: 90%;
   padding-top: 10px;
   padding-bottom: 10px;
 `;
 
 export const RelatorioLine = styled.Text`
   width: 100%;
+  font-size: 18px;
   margin-bottom: 5px;
 `;
 

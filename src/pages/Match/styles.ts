@@ -6,7 +6,7 @@ export const Container = styled.ScrollView`
   align-items: center; */
   /* justify-content: center; */
   /* padding-top: 10%; */
-  
+
 `;
 
 export const Body = styled.View`
@@ -71,7 +71,7 @@ export const Topico = styled.Text`
 `;
 
 export const Descricao = styled.Text`
-    flex: 1;
+
 `;
 
 
@@ -83,7 +83,7 @@ export const SuccessButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border-radius: 16px;
-  
+
 `;
 
 export const DangerButton = styled.TouchableOpacity`
@@ -113,7 +113,7 @@ export const ButtonText = styled.Text`
   color: #fff;
   font-size: 16px;
   width: 100%;
-  
+
 `;
 
 export const PerdidoNav = styled.View`
@@ -122,20 +122,20 @@ export const PerdidoNav = styled.View`
     flex-direction: row;
     justify-content: space-around;
     /* background-color: red; */
-    
+
 `;
 
 export const PerdidoNavBtn = styled.TouchableOpacity`
     width: 60px;
     height: 40px;
     border-radius: 4px;
-    
+
     justify-content: center;
     background-color: #f7ae0f;
 `;
 
 export const Footer = styled.View`
-    
+
     padding: 5px;
     border-top-width: 1px;
     border-top-color: #ff6b6b;

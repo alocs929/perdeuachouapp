@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text,TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import PageHeader from '../../components/PageHeader';
 import AsyncStorage from '@react-native-community/async-storage';
+import Modal from 'react-native-modal';
 
 import {
   Container,
@@ -38,19 +39,28 @@ const  Match: React.FC = ({ route, navigation }) => {
     "dataCadastro":"",
     "images":[ { "link":"" } ]
   });
+  const [modalVisibleContato,setModalVisibleContato] = useState(false)
+  const [modalVisibleDetalhes,setModalVisibleDetalhes] = useState(false)
   const [comparados, setComparados] = useState([
     {
-      "categoria":"",
-      "descricao":"",
-      "local":"",
-      "status":"",
-      "dataCadastro":"",
-      "perdidoEm":"",
-      "images": [ { "link":"" } ]
+      "categoria":" ",
+      "descricao":" ",
+      "local":" ",
+      "status":" ",
+      "dataCadastro":" ",
+      "perdidoEm":" ",
+      "images": [ { "link":"" } ],
+      "usuario":{
+        "nome": "igor",
+      "email": "igor@gmail.com",
+      "senha": "$2a$10$.8NCBCuZfSIWeWCNZjTEIusPj45.x7eyPU9xbZtjS8krwTGL2ld4q",
+      "telefone": "123321123",
+      "cpfCpnj": "12332112345",
+      }
     }
   ]);
   const [idObjetoAtual, setIdObjetoAtual] = useState(0);
-
+  const [openModal,SetOpenModal] = useState(false)
   function avancar () {
     console.log("avancar");
     let maximo = comparados.length;
@@ -75,7 +85,7 @@ const  Match: React.FC = ({ route, navigation }) => {
     const URIConfirmar = `pertence/entrega/${idAchado}/${idPerdido}`;
     const response = await api.patch(URIConfirmar);
     console.log(response.status);
-    // 
+    //
   }
 
   function detalhes(){
@@ -113,22 +123,116 @@ const  Match: React.FC = ({ route, navigation }) => {
       // setFoundedItems(data)
     }
     fetchData();
-    
+
   }, []);
 
   const { data } = route.params;
   return (
     <>
+
+
       <Container
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={{
           paddingHorizontal: 8,
           alignItems: 'center',
-          
+
         }}
       >
+
+        <Modal isVisible={modalVisibleContato}>
+        <View  style={{paddingVertical:20, display:'flex',justifyContent:'center', backgroundColor:'white' ,borderRadius: 10}}>
+
+            <View style={{display: 'flex', flexDirection: 'row', justifyContent:'center',}}>
+                <Text style={{fontSize:30}}>Contato</Text>
+
+                <TouchableOpacity style={{position:"absolute", top:-20, left:340}} onPress={()=>{setModalVisibleContato(false)}}>
+                  <Text  style={{color:'red',fontSize:32}}>
+                          X
+                  </Text>
+                </TouchableOpacity>
+            </View>
+            <View style={{width:"100%",
+              height:1,
+          backgroundColor:"lightgray", marginBottom:20}}></View>
+          <View style={{marginLeft:25}}>
+              <Text style={{fontSize: 18, marginBottom:10}}>Nome: { comparados[idObjetoAtual].usuario.nome }</Text>
+              <Text style={{fontSize: 18, marginBottom:10}}>Email: { comparados[idObjetoAtual].usuario.email} </Text>
+              <Text style={{fontSize: 18, marginBottom:10}}>Telefone: {comparados[idObjetoAtual].usuario.telefone } </Text>
+          </View>
+          <View style={{width:"100%",
+              height:1,
+          backgroundColor:"lightgray"}}></View>
+          </View>
+        </Modal>
+
+        <Modal isVisible={modalVisibleDetalhes}>
+        <View  style={{paddingVertical:20, display:'flex',justifyContent:'center', backgroundColor:'white' ,borderRadius: 10}}>
+
+            <View style={{display: 'flex', flexDirection: 'row', justifyContent:'center',}}>
+                <Text style={{fontSize:30}}>Detalhes</Text>
+
+                <TouchableOpacity style={{position:"absolute", top:-20, left:340}} onPress={()=>{setModalVisibleDetalhes(false)}}>
+                  <Text  style={{color:'red',fontSize:32}}>
+                          X
+                  </Text>
+                </TouchableOpacity>
+            </View>
+            <View style={{width:"100%",
+              height:1,
+          backgroundColor:"lightgray", marginBottom:20}}></View>
+          <View style={{marginLeft:10}}>
+          <Imagem source={{
+              uri: comparados[idObjetoAtual].images[0].link
+            }}></Imagem>
+            <Lista>
+              <ListaItem>
+                <Topico>Data: </Topico>
+                <Descricao>{comparados[idObjetoAtual].dataCadastro}</Descricao>
+              </ListaItem>
+              <ListaItem>
+                <Topico>Categoria: </Topico>
+                <Descricao>
+                  {comparados[idObjetoAtual].categoria}
+                </Descricao>
+              </ListaItem>
+              <ListaItem>
+                <Topico>Descrição: </Topico>
+                <Descricao>
+                {comparados[idObjetoAtual].descricao}
+                </Descricao>
+              </ListaItem>
+              <ListaItem>
+                <Topico>Localização: </Topico>
+                <Descricao>
+                {comparados[idObjetoAtual].perdidoEm}
+                </Descricao>
+              </ListaItem>
+              <ListaItem>
+                <Topico>Status: </Topico>
+                <Descricao>
+                {comparados[idObjetoAtual].status}
+                </Descricao>
+              </ListaItem>
+            </Lista>
+          </View>
+          <View style={{width:"100%",
+              height:1,
+          backgroundColor:"lightgray"}}></View>
+          </View>
+        </Modal>
+
+
+
+
+
         <PageHeader title="Match" />
         <Body>
+
+
+
+
+
           <SideContainer>
             <ObjetoHead>
               <TitlePrimary>
@@ -232,8 +336,8 @@ const  Match: React.FC = ({ route, navigation }) => {
             </PerdidoNav>
             <DangerButton onPress={() => {
               detalhes();
-            }}> 
-            <ButtonText>Mais detalhes</ButtonText>
+            }}>
+            <ButtonText onPress={()=>{setModalVisibleDetalhes(true)}}>Mais detalhes</ButtonText>
           </DangerButton>
           </SideContainer>
         </Body>
@@ -247,11 +351,11 @@ const  Match: React.FC = ({ route, navigation }) => {
           <ButtonText>Confirmar</ButtonText>
         </SuccessButton>
 
-        <PrimaryButton>
-          <ButtonText>Mensagem</ButtonText>
+        <PrimaryButton onPress={()=> setModalVisibleContato(true)}>
+          <ButtonText>Contato</ButtonText>
         </PrimaryButton>
 
-        
+
       </Footer>
     </>
   );
